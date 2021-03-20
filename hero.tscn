@@ -7,7 +7,9 @@
 [sub_resource type="StyleBoxFlat" id=2]
 
 [node name="Hero" type="Control"]
-rect_min_size = Vector2( 600, 500 )
+margin_right = 505.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 505, 335 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,28 +17,26 @@ __meta__ = {
 title = "tzwm_test"
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 580.0
-margin_bottom = 495.0
-rect_min_size = Vector2( 560, 475 )
+margin_right = 505.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 505, 335 )
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_right = 560.0
-margin_bottom = 475.0
-rect_min_size = Vector2( 560, 475 )
+margin_right = 505.0
+margin_bottom = 335.0
+rect_min_size = Vector2( 505, 335 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_right = 560.0
+margin_right = 505.0
 margin_bottom = 120.0
-rect_min_size = Vector2( 560, 120 )
+rect_min_size = Vector2( 505, 120 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,14 +56,14 @@ text = "test_tzwm"
 
 [node name="HandCards" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 124.0
-margin_right = 560.0
-margin_bottom = 464.0
-rect_min_size = Vector2( 560, 340 )
+margin_right = 505.0
+margin_bottom = 334.0
+rect_min_size = Vector2( 505, 210 )
 
 [node name="Card" parent="Panel/VBoxContainer/HandCards" instance=ExtResource( 3 )]
-margin_bottom = 340.0
+margin_bottom = 210.0
 
 [node name="Card2" parent="Panel/VBoxContainer/HandCards" instance=ExtResource( 3 )]
-margin_left = 154.0
-margin_right = 304.0
-margin_bottom = 340.0
+margin_left = 133.0
+margin_right = 262.0
+margin_bottom = 210.0
