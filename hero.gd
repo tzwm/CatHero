@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name Hero
 
 export(String) var title
@@ -9,4 +9,4 @@ const Card = preload("res://card.tscn")
 
 func _ready():
 	var card = Card.instance()
-	$Control/Panel/VBoxContainer/HandCards.add_child(card)
+	$Panel/VBoxContainer/HandCards.add_child(card)

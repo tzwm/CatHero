@@ -1,5 +1,5 @@
-extends Area2D
-
+extends Control
+class_name Team
 
 # Declare member variables here. Examples:
 # var a = 2

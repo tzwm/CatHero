@@ -1,4 +1,4 @@
-extends Area2D
+extends Control
 class_name Card
 
 enum CardType {
@@ -21,8 +21,8 @@ export(String) var description
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Control/Panel/VBoxContainer/TopBar/Title.text = title
-	$Control/Panel/VBoxContainer/MarginContainer2/Description.text = description
+	$Panel/VBoxContainer/TopBar/Title.text = title
+	$Panel/VBoxContainer/MarginContainer2/Description.text = description
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
