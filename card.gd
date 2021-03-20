@@ -14,14 +14,15 @@ enum Rarity {
 	RARE,
 }
 
-var key : String
-var title : String
-var character : int
+export var title : String
+export(GameConst.Character) var character
+export var description : String
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Control/VBoxContainer/TopBar/Title.text = title
+	$Control/VBoxContainer/MarginContainer2/Description.text = description
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

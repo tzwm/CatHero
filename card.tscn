@@ -8,6 +8,8 @@ extents = Vector2( 75, 120 )
 
 [node name="Card" type="Area2D"]
 script = ExtResource( 1 )
+title = "test_title"
+description = "test_description"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 75, 120 )
@@ -65,7 +67,7 @@ margin_right = 150.0
 margin_bottom = 202.0
 rect_min_size = Vector2( 0, 40 )
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/MarginContainer2"]
+[node name="Description" type="Label" parent="Control/VBoxContainer/MarginContainer2"]
 margin_top = 4.0
 margin_right = 150.0
 margin_bottom = 35.0
