@@ -1,5 +1,5 @@
-class_name Card
 extends Area2D
+class_name Card
 
 enum CardType {
 	ATTACK,
@@ -14,15 +14,15 @@ enum Rarity {
 	RARE,
 }
 
-export var title : String
+export(String) var title
 export(GameConst.Character) var character
-export var description : String
+export(String) var description
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Control/VBoxContainer/TopBar/Title.text = title
-	$Control/VBoxContainer/MarginContainer2/Description.text = description
+	$Control/Panel/VBoxContainer/TopBar/Title.text = title
+	$Control/Panel/VBoxContainer/MarginContainer2/Description.text = description
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
