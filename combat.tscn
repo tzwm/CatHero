@@ -15,10 +15,10 @@ margin_top = 708.0
 margin_bottom = 1080.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-margin_left = 615.896
-margin_top = 95.4414
-margin_right = 1269.9
-margin_bottom = 651.441
+margin_left = 589.482
+margin_top = 53.1797
+margin_right = 1243.48
+margin_bottom = 609.18
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
