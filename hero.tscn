@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/avatar_f.jpg" type="Texture" id=1]
 [ext_resource path="res://hero.gd" type="Script" id=2]
 [ext_resource path="res://card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/cards/general/attack_card.tscn" type="PackedScene" id=4]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 
 [node name="Hero" type="Control"]
 margin_right = 505.0
@@ -20,7 +21,7 @@ title = "tzwm_test"
 margin_right = 505.0
 margin_bottom = 335.0
 rect_min_size = Vector2( 505, 335 )
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,8 +63,10 @@ rect_min_size = Vector2( 505, 210 )
 
 [node name="Card" parent="Panel/VBoxContainer/HandCards" instance=ExtResource( 3 )]
 margin_bottom = 210.0
+CardModel = ExtResource( 4 )
 
 [node name="Card2" parent="Panel/VBoxContainer/HandCards" instance=ExtResource( 3 )]
 margin_left = 133.0
 margin_right = 262.0
 margin_bottom = 210.0
+CardModel = ExtResource( 4 )

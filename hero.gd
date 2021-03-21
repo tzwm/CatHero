@@ -8,5 +8,6 @@ export(Array, PackedScene) var hand_cards
 const Card = preload("res://card.tscn")
 
 func _ready():
-	var card = Card.instance()
-	$Panel/VBoxContainer/HandCards.add_child(card)
+#	var card = Card.instance()
+#	$Panel/VBoxContainer/HandCards.add_child(card)
+	pass

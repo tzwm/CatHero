@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AttributeModel",
+"language": "GDScript",
+"path": "res://model/attribute_model.gd"
+}, {
 "base": "Control",
 "class": "Card",
 "language": "GDScript",
 "path": "res://card.gd"
+}, {
+"base": "Node",
+"class": "CardModel",
+"language": "GDScript",
+"path": "res://model/card_model.gd"
+}, {
+"base": "Control",
+"class": "Combat",
+"language": "GDScript",
+"path": "res://combat.gd"
 }, {
 "base": "Reference",
 "class": "GameConst",
@@ -40,7 +55,10 @@ _global_script_classes=[ {
 "path": "res://map/node.gd"
 } ]
 _global_script_class_icons={
+"AttributeModel": "",
 "Card": "",
+"CardModel": "",
+"Combat": "",
 "GameConst": "",
 "Hero": "",
 "MonsterModel": "",

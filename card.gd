@@ -1,28 +1,14 @@
 extends Control
 class_name Card
 
-enum CardType {
-	ATTACK,
-	DEFEND,
-	SKILL,
-	CURSE,
-}
-
-enum Rarity {
-	COMMON,
-	UNCOMMON,
-	RARE,
-}
-
-export(String) var title
-export(GameConst.Character) var character
-export(String) var description
-
+export(PackedScene) var CardModel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Panel/VBoxContainer/TopBar/Title.text = title
-	$Panel/VBoxContainer/MarginContainer2/Description.text = description
+	var card = CardModel.instance()
+	print(card.name)
+	$Panel/VBoxContainer/TopBar/Title.text = card.title
+	$Panel/VBoxContainer/MarginContainer2/Description.text = card.description
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
