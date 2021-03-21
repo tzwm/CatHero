@@ -33,18 +33,25 @@ _global_script_classes=[ {
 "class": "Team",
 "language": "GDScript",
 "path": "res://team.gd"
+}, {
+  "base": "RigidBody2D",
+"class": "MapNode",
+"language": "GDScript",
+"path": "res://map/node.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
 "GameConst": "",
 "Hero": "",
 "MonsterModel": "",
-"Team": ""
+"Team": "",
+"MapNode": ""
 }
 
 [application]
 
 config/name="cat_hero"
+run/main_scene="res://homepage/HUB.tscn"
 config/icon="res://icon.png"
 
 [display]
