@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "Combat",
 "language": "GDScript",
-"path": "res://combat.gd"
+"path": "res://combat/combat.gd"
 }, {
 "base": "Reference",
 "class": "GameConst",
@@ -40,6 +40,16 @@ _global_script_classes=[ {
 "path": "res://hero.gd"
 }, {
 "base": "Node",
+"class": "HeroModel",
+"language": "GDScript",
+"path": "res://model/hero_model.gd"
+}, {
+"base": "RigidBody2D",
+"class": "MapNode",
+"language": "GDScript",
+"path": "res://map/node.gd"
+}, {
+"base": "Node",
 "class": "MonsterModel",
 "language": "GDScript",
 "path": "res://model/monster_model.gd"
@@ -48,11 +58,6 @@ _global_script_classes=[ {
 "class": "Team",
 "language": "GDScript",
 "path": "res://team.gd"
-}, {
-  "base": "RigidBody2D",
-"class": "MapNode",
-"language": "GDScript",
-"path": "res://map/node.gd"
 } ]
 _global_script_class_icons={
 "AttributeModel": "",
@@ -61,16 +66,20 @@ _global_script_class_icons={
 "Combat": "",
 "GameConst": "",
 "Hero": "",
+"HeroModel": "",
+"MapNode": "",
 "MonsterModel": "",
-"Team": "",
-"MapNode": ""
+"Team": ""
 }
 
 [application]
 
 config/name="cat_hero"
-run/main_scene="res://homepage/HUB.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://global.gd"
 
 [display]
 

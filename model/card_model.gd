@@ -7,5 +7,11 @@ export(String) var description
 
 var attributes : Array
 
-func _ready():
+func init():
 	attributes = $Attributes.get_children()
+	for attr in attributes:
+		attr.init()
+
+func act():
+	for attr in attributes:
+		attr.act()

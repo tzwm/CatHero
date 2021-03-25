@@ -8,6 +8,7 @@ class_name Team
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Heroes/Hero.init()
 	pass # Replace with function body.
 
 

@@ -1,10 +1,16 @@
 extends Node
 class_name AttributeModel
 
+signal add_attack_value(value)
+
 export(String) var title
 
-var actor
-var combat
+func init():
+	pass
+	#add_to_group("attributes")
+#	print(Global)
+#	if Global.Combat:
+#		connect("add_attack_value", Global.combat, "_on_Combat_hero_add_attack")
 
 func act():
 	pass

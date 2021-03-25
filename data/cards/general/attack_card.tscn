@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://data/cards/general/attack_card.gd" type="Script" id=1]
+[ext_resource path="res://model/card_model.gd" type="Script" id=1]
 [ext_resource path="res://data/attributes/attack_attribute.tscn" type="PackedScene" id=2]
 
 [node name="AttackCard" type="Node"]
 script = ExtResource( 1 )
-title = "Attack_3"
-description = "Attack 3"
+title = "Attack 3"
+description = "tttt card"
 
 [node name="Attributes" type="Node" parent="."]
 
