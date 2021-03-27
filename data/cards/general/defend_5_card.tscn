@@ -5,9 +5,9 @@
 
 [node name="Defend5Card" type="Node"]
 script = ExtResource( 2 )
-title = "Defend"
+title = "普通防御"
 type = 1
-description = "Defend 5"
+description = "防御力 5"
 
 [node name="Attributes" type="Node" parent="."]
 

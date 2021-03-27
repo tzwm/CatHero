@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://card.gd" type="Script" id=1]
 [ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
 [ext_resource path="res://data/cards/general/attack_3_card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=4]
 
 [node name="Card" type="Control"]
 margin_right = 129.0
@@ -32,47 +33,49 @@ __meta__ = {
 }
 
 [node name="CardImage" type="MarginContainer" parent="Panel/VBoxContainer"]
-margin_right = 129.0
+margin_right = 133.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 129, 100 )
 mouse_filter = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer/CardImage"]
-margin_right = 129.0
+margin_right = 133.0
 margin_bottom = 100.0
 texture = ExtResource( 2 )
 
 [node name="TopBar" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 104.0
-margin_right = 129.0
-margin_bottom = 118.0
+margin_right = 133.0
+margin_bottom = 124.0
 mouse_filter = 2
 
 [node name="Title" type="Label" parent="Panel/VBoxContainer/TopBar"]
-margin_right = 28.0
-margin_bottom = 14.0
+margin_right = 34.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 4 )
 text = "Title"
 align = 1
 valign = 1
 
 [node name="Character" type="Label" parent="Panel/VBoxContainer/TopBar"]
-margin_left = 32.0
-margin_right = 44.0
-margin_bottom = 14.0
+margin_left = 38.0
+margin_top = 3.0
+margin_right = 50.0
+margin_bottom = 17.0
 text = "M"
 align = 1
 valign = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
-margin_top = 122.0
-margin_right = 129.0
-margin_bottom = 162.0
+margin_top = 128.0
+margin_right = 133.0
+margin_bottom = 171.0
 rect_min_size = Vector2( 0, 40 )
 mouse_filter = 2
 
 [node name="Description" type="Label" parent="Panel/VBoxContainer/MarginContainer2"]
-margin_top = 4.0
-margin_right = 129.0
-margin_bottom = 35.0
+margin_right = 133.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 4 )
 text = "Card Description
 "

@@ -5,7 +5,7 @@
 
 [node name="OozeMonster" type="Node"]
 script = ExtResource( 2 )
-nickname = "Ooze"
+nickname = "软泥怪"
 avatar = ExtResource( 1 )
 level = 2
 health_max = 6

@@ -7,7 +7,7 @@
 
 [node name="PaladinHero" type="Node"]
 script = ExtResource( 1 )
-nickname = "Paladinnnn"
+nickname = "圣骑士"
 avatar = ExtResource( 2 )
 character = 1
 health_max = 12

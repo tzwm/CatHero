@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://model/monster_model.gd" type="Script" id=1]
+[ext_resource path="res://assets/monster.jpeg" type="Texture" id=2]
+
+[node name="DoveMan" type="Node"]
+script = ExtResource( 1 )
+nickname = "鸽子人"
+avatar = ExtResource( 2 )
+level = 3
+health_max = 8
+attack = 6
+coin_dropped = 2
