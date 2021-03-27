@@ -81,4 +81,3 @@ text = "Next"
 [node name="Team" parent="VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 612.0
 margin_bottom = 984.0
-[connection signal="hero_add_attack" from="." to="." method="_on_Combat_hero_add_attack"]

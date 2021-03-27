@@ -12,11 +12,8 @@ func _init():
 		
 func _ready():
 	Global.Combat = self
-	print(Global.Combat)
 	var _monster_test = preload("res://data/monsters/all_monsters.tscn").instance().get_node("软泥怪")
 	combat_begin(_monster_test)
-	print(get_tree().get_nodes_in_group("attributes"))
-
 
 func combat_begin(_monster: MonsterModel):
 	monster = _monster
