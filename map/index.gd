@@ -133,7 +133,7 @@ func randi_range(from: int, to: int):
 	
 # 将节点位置映射到地图单元格位置
 func node_to_cell(pos):
-	return Vector2(2*pos.x, 2*pos.y)
+	return pos * 2
 
 # 将节点的位置，隐射到全局坐标
 func node_to_position(node_pos):
@@ -145,7 +145,7 @@ func node_to_position(node_pos):
 	
 # 将地图单元格位置映射到节点位置	
 func cell_to_node(pos):
-	return Vector2(pos.x / 2, pos.y / 2)
+	return pos / 2
 	
 # 计算单个节点和周围节点的关系，并随机连接
 func calc_node_connection(x, y):
@@ -180,11 +180,7 @@ func create_road(x: int, y: int):
 	var current_node = map_node_data[x][y]
 	
 	var tile_id = tile_map.tile_set.find_tile_by_name('map_node_base')
-#	if current_node.node_type == GameConst.NodeTypeEnum.MONSTER:
-#		tile_id = tile_map.tile_set.find_tile_by_name('m' + String(current_node.monster_level))
-#	else:
-#		tile_id = tile_map.tile_set.find_tile_by_name('map_node_' + String(current_node.node_type))
-	
+#	
 	map_data[2*x][2*y] = tile_id
 	# 计算道路
 	for point in current_node.next_node_list:
@@ -255,7 +251,7 @@ func random_node_type():
 # 随机怪物等级
 func random_monster_level():
 	var level_range = monster_level_range[level]
-	return rand_range(level_range[0], level_range[1]+1)
+	return randi_range(level_range[0], level_range[1]+1)
 	
 # 生成节点的类型
 func create_node_role(x: int, y: int):
@@ -274,6 +270,9 @@ func instanc_node(x: int, y: int):
 	instance.node_pos = Vector2(x, y)
 	var pos = node_to_position(instance.node_pos)
 	instance.position = pos
+	if node ==  GameConst.NodeTypeEnum.MONSTER:
+		instance.level = random_monster_level()
+		
 	map_node_data[x][y] = instance
 	add_child(instance)
 	
@@ -344,6 +343,12 @@ func player_to_cell(node_pos):
 	var pos = node_to_position(node_pos)
 	$Player.node_pos = node_pos
 	$Player.position = pos
+
+func player_move(path: Array, target: Vector2):
+	var real_pos_path = []
+	for p in path:
+		real_pos_path.append(node_to_position(p))
+	$Player.move_with_path(real_pos_path, target)
 	
 func new_game():
 	create_map()
@@ -396,6 +401,7 @@ func get_access_path(start, target):
 		path.push_front(p_node)
 		p_node = from[p_node]
 	
+	path.push_front(start)
 	return path
 
 # 点击地图上的点
@@ -405,9 +411,15 @@ func _on_TileMap_click_cell(pos):
 		if target.x >= 0 && target.x < map_size.x && target.y >= 0 && target.y < map_size.y:
 			var current = $Player.node_pos
 			var path = get_access_path(current, target)
-			if path.size() > 0:
-				player_to_cell(target)
-				update_visible_state(target, visible_area)
+			if path.size() > 1:
+				if !$Player.is_moving:
+					$Player.node_pos = target
+					player_move(path, target)
+					
 			
 		
 
+
+
+func _on_Player_move_end(target: Vector2):
+	update_visible_state(target, visible_area)

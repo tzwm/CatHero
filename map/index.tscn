@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/road2.png" type="Texture" id=5]
 [ext_resource path="res://assets/road3.png" type="Texture" id=6]
 [ext_resource path="res://assets/road4.png" type="Texture" id=7]
+[ext_resource path="res://map/player.gd" type="Script" id=8]
 [ext_resource path="res://assets/art/playerGrey_up2.png" type="Texture" id=9]
 [ext_resource path="res://assets/art/playerGrey_up1.png" type="Texture" id=10]
 [ext_resource path="res://map/tile_map.gd" type="Script" id=11]
@@ -262,16 +263,6 @@
 31/shapes = [  ]
 31/z_index = 0
 
-[sub_resource type="GDScript" id=4]
-script/source = "extends Area2D
-
-var node_pos = Vector2(0,0)
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-"
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 9 ) ],
@@ -295,7 +286,7 @@ script = ExtResource( 11 )
 [node name="Player" type="Area2D" parent="."]
 position = Vector2( 32, 32 )
 z_index = 1
-script = SubResource( 4 )
+script = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.5, 0.5 )
@@ -313,3 +304,4 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 [connection signal="click_cell" from="TileMap" to="." method="_on_TileMap_click_cell"]
+[connection signal="move_end" from="Player" to="." method="_on_Player_move_end"]
