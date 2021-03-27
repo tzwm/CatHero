@@ -10,6 +10,7 @@ script = ExtResource( 1 )
 nickname = "Paladinnnn"
 avatar = ExtResource( 2 )
 character = 1
+health_max = 12
 
 [node name="DeckBuilt" type="Node" parent="."]
 

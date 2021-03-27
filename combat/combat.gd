@@ -1,27 +1,21 @@
 extends Control
 class_name Combat
 
-var monster : MonsterModel
+export(PackedScene) var MonsterModel
+onready var monster = MonsterModel.instance()
 var hero_attack : int
 var hero_defend : int
-var monster_attack : int
-var monster_health : int
 
 func _ready():
 	Global.Combat = self
-	var _monster_test = preload("res://data/monsters/all_monsters.tscn").instance().get_node("软泥怪")
-	combat_begin(_monster_test)
-
-func combat_begin(_monster: MonsterModel):
-	monster = _monster
-	monster_attack = monster.attack 
-	monster_health = monster.health_current
+	add_child(monster)
 	hero_attack = 0
 	hero_defend = 0
 
 func _process(delta):
-	$VBoxContainer/MonsterAction/Attack.text = "Attack: %s" % monster_attack
-	$VBoxContainer/MonsterAction/Defend.text = "Health: %s" % monster_health
+	$VBoxContainer/Top/MonsterAvatar.texture = monster.avatar
+	$VBoxContainer/MonsterAction/Attack.text = "Attack: %s" % monster.attack
+	$VBoxContainer/MonsterAction/Health.text = "Health: %s" % monster.health_current
 	$VBoxContainer/HeroAction/Attack.text = "Attack: %s" % hero_attack
 	$VBoxContainer/HeroAction/Defend.text = "Defend: %s" % hero_defend
 

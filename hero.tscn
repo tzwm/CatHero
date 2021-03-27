@@ -55,6 +55,13 @@ margin_right = 190.0
 margin_bottom = 67.0
 text = "test_tzwm"
 
+[node name="Health" type="Label" parent="Panel/VBoxContainer/HBoxContainer"]
+margin_left = 194.0
+margin_top = 53.0
+margin_right = 239.0
+margin_bottom = 67.0
+text = "20/100"
+
 [node name="HandCards" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 124.0
 margin_right = 505.0

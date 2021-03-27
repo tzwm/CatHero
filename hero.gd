@@ -10,6 +10,7 @@ func _ready():
 	add_child(hero)
 	$Panel/VBoxContainer/HBoxContainer/Avatar.texture = hero.avatar
 	$Panel/VBoxContainer/HBoxContainer/Nickname.text = hero.nickname
+	$Panel/VBoxContainer/HBoxContainer/Health.text = "%s/%s" % [hero.health_current, hero.health_max]
 
 func _process(delta):
 	#TODO(tzwm): 我先不管性能了，每帧都直接刷新了
