@@ -30,6 +30,9 @@ func play_the_card(card, index):
 	deck_exhausted.push_back(c)
 	c.act()
 
+func get_damage(value):
+	health_current -= value
+
 func _draw_a_card() -> void:
 	if deck_hand.size() >= HAND_LIMIT:
 		return

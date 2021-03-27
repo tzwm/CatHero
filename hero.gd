@@ -8,11 +8,11 @@ onready var hero = HeroModel.instance()
 
 func _ready():
 	add_child(hero)
-	$Panel/VBoxContainer/HBoxContainer/Avatar.texture = hero.avatar
-	$Panel/VBoxContainer/HBoxContainer/Nickname.text = hero.nickname
-	$Panel/VBoxContainer/HBoxContainer/Health.text = "%s/%s" % [hero.health_current, hero.health_max]
+	_update_hero_view()
+	_update_hand_cards_view()
 
 func _process(delta):
+	_update_hero_view()
 	#TODO(tzwm): 我先不管性能了，每帧都直接刷新了
 	_update_hand_cards_view()
 
@@ -29,5 +29,10 @@ func _update_hand_cards_view() -> void:
 	for card_node in new_hand_card_nodes:
 		$Panel/VBoxContainer/HandCards.add_child(card_node)
 
+func _update_hero_view() -> void:
+	$Panel/VBoxContainer/HBoxContainer/Avatar.texture = hero.avatar
+	$Panel/VBoxContainer/HBoxContainer/Nickname.text = hero.nickname
+	$Panel/VBoxContainer/HBoxContainer/Health.text = "%s/%s" % [hero.health_current, hero.health_max]
+	
 func _on_play_the_card(card : CardModel, index : int) -> void:
 	hero.play_the_card(card, index)

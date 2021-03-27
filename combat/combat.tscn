@@ -83,3 +83,4 @@ text = "Next"
 [node name="Team" parent="VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 612.0
 margin_bottom = 984.0
+[connection signal="button_down" from="VBoxContainer/HeroAction/NextButton" to="." method="_on_NextButton_button_down"]
