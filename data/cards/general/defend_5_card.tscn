@@ -6,6 +6,7 @@
 [node name="Defend5Card" type="Node"]
 script = ExtResource( 2 )
 title = "Defend"
+type = 1
 description = "Defend 5"
 
 [node name="Attributes" type="Node" parent="."]
