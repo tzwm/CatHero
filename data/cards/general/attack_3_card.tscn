@@ -3,10 +3,10 @@
 [ext_resource path="res://model/card_model.gd" type="Script" id=1]
 [ext_resource path="res://data/attributes/attack_attribute.tscn" type="PackedScene" id=2]
 
-[node name="AttackCard" type="Node"]
+[node name="Attack3Card" type="Node"]
 script = ExtResource( 1 )
-title = "Attack 3"
-description = "tttt card"
+title = "Attack"
+description = "Attack 3"
 
 [node name="Attributes" type="Node" parent="."]
 

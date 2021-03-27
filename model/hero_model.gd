@@ -7,25 +7,24 @@ export(GameConst.Character) var character
 
 const HAND_LIMIT = 3
 
-export(Array, PackedScene) var deck_built
+onready var deck_built = $DeckBuilt.get_children()
 var deck_hand : Array
 var deck_exhausted : Array
 var deck_unused : Array
 
 func _ready():
-	for c in deck_built:
-		var cc = c.instance()
-		#cc.init()
-		deck_unused.push_back(cc)
+	deck_unused = deck_built.duplicate(true)
+	deck_unused.shuffle()
 		
 	_draw_a_card()
 	yield(get_tree().create_timer(1.0), "timeout")
 	_draw_a_card()
 
 func play_the_card(card, index):
+	var c = deck_hand[index]
 	deck_hand.remove(index)
-	deck_exhausted.push_back(card)
-	card.act()
+	deck_exhausted.push_back(c)
+	c.act()
 
 func _draw_a_card() -> void:
 	if deck_hand.size() >= HAND_LIMIT:

@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://model/hero_model.gd" type="Script" id=1]
 [ext_resource path="res://assets/avatar_f.jpg" type="Texture" id=2]
-[ext_resource path="res://data/cards/general/attack_card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/cards/general/attack_3_card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/cards/general/defend_5_card.tscn" type="PackedScene" id=4]
 
 [node name="PaladinHero" type="Node"]
 script = ExtResource( 1 )
 nickname = "Paladinnnn"
 avatar = ExtResource( 2 )
 character = 1
-deck_built = [ ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 3 ) ]
+
+[node name="DeckBuilt" type="Node" parent="."]
+
+[node name="Attack3Card" parent="DeckBuilt" instance=ExtResource( 3 )]
+
+[node name="Defend5Card" parent="DeckBuilt" instance=ExtResource( 4 )]
+
+[node name="Attack3Card2" parent="DeckBuilt" instance=ExtResource( 3 )]
+
+[node name="Defend5Card2" parent="DeckBuilt" instance=ExtResource( 4 )]

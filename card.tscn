@@ -2,7 +2,7 @@
 
 [ext_resource path="res://card.gd" type="Script" id=1]
 [ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
-[ext_resource path="res://data/cards/general/attack_card.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/cards/general/attack_3_card.tscn" type="PackedScene" id=3]
 
 [node name="Card" type="Control"]
 margin_right = 129.0
