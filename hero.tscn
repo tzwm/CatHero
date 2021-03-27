@@ -4,7 +4,7 @@
 [ext_resource path="res://hero.gd" type="Script" id=2]
 [ext_resource path="res://card.tscn" type="PackedScene" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 
 [node name="Hero" type="Control"]
 margin_right = 505.0
@@ -20,7 +20,7 @@ title = "tzwm_test"
 margin_right = 505.0
 margin_bottom = 335.0
 rect_min_size = Vector2( 505, 335 )
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

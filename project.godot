@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://hero.gd"
 }, {
+"base": "RigidBody2D",
+"class": "MapNodeBase",
+"language": "GDScript",
+"path": "res://map/nodes/map_node_base.gd"
+}, {
 "base": "Node",
 "class": "MonsterModel",
 "language": "GDScript",
@@ -33,32 +38,25 @@ _global_script_classes=[ {
 "class": "Team",
 "language": "GDScript",
 "path": "res://team.gd"
-}, {
-  "base": "RigidBody2D",
-"class": "MapNode",
-"language": "GDScript",
-"path": "res://map/node.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
 "GameConst": "",
 "Hero": "",
+"MapNodeBase": "",
 "MonsterModel": "",
-"Team": "",
-"MapNode": ""
+"Team": ""
 }
 
 [application]
 
 config/name="cat_hero"
-run/main_scene="res://homepage/HUB.tscn"
+run/main_scene="res://map/index.tscn"
 config/icon="res://icon.png"
 
-[display]
+[debug]
 
-window/size/width=1920
-window/size/height=1080
-window/dpi/allow_hidpi=true
+gdscript/warnings/integer_division=false
 
 [rendering]
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://map/nodes/map_node_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://map/nodes/watch_tower.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/nodes/瞭望塔.png" type="Texture" id=3]
+
+[node name="WatchTower" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+node_type = 6
+node_name = "瞭望塔"
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )

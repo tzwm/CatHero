@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://map/nodes/map_node_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/art/nodes/苦行僧.png" type="Texture" id=2]
+[ext_resource path="res://map/nodes/ascetic_monk.gd" type="Script" id=3]
+
+[node name="AsceticMonk" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+node_type = 4
+node_name = "苦行僧"
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
