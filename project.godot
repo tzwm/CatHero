@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://hero.gd"
 }, {
+"base": "RigidBody2D",
+"class": "MapNodeBase",
+"language": "GDScript",
+"path": "res://map/nodes/map_node_base.gd"
+}, {
 "base": "Node",
 "class": "HeroModel",
 "language": "GDScript",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "Hero": "",
 "HeroModel": "",
 "MapNode": "",
+"MapNodeBase": "",
 "MonsterModel": "",
 "Team": ""
 }
@@ -75,6 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="cat_hero"
+run/main_scene="res://map/index.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -86,6 +93,10 @@ Global="*res://global.gd"
 window/size/width=1920
 window/size/height=1080
 window/dpi/allow_hidpi=true
+
+[debug]
+
+gdscript/warnings/integer_division=false
 
 [rendering]
 
