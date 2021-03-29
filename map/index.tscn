@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://map/index.gd" type="Script" id=1]
 [ext_resource path="res://assets/road5.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/art/m8.png" type="Texture" id=19]
 [ext_resource path="res://assets/art/m9.png" type="Texture" id=20]
 [ext_resource path="res://assets/art/m10.png" type="Texture" id=21]
+[ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=22]
 [ext_resource path="res://assets/art/map_node.png" type="Texture" id=23]
 
 [sub_resource type="TileSet" id=1]
@@ -283,15 +284,17 @@ format = 1
 tile_data = PoolIntArray( -1245169, 536870943, 0 )
 script = ExtResource( 11 )
 
-[node name="Player" type="Area2D" parent="."]
+[node name="Player" type="RigidBody2D" parent="."]
 position = Vector2( 32, 32 )
 z_index = 1
+gravity_scale = 0.0
 script = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "up"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -303,5 +306,70 @@ drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -500.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="CanvasLayer/Panel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -75.0
+margin_top = 30.0
+margin_right = 75.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 22 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desc" type="Label" parent="CanvasLayer/Panel"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -75.0
+margin_right = -30.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 22 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Go" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -175.827
+margin_top = 600.0
+margin_right = -55.8271
+margin_bottom = 640.0
+custom_fonts/font = ExtResource( 22 )
+text = "前进"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rest" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -364.355
+margin_top = 600.0
+margin_right = -244.355
+margin_bottom = 640.0
+custom_fonts/font = ExtResource( 22 )
+text = "篝火时刻"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="click_cell" from="TileMap" to="." method="_on_TileMap_click_cell"]
 [connection signal="move_end" from="Player" to="." method="_on_Player_move_end"]
+[connection signal="pressed" from="CanvasLayer/Go" to="." method="_on_Go_pressed"]

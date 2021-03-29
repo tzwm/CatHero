@@ -8,6 +8,9 @@
 script = ExtResource( 3 )
 node_type = 10
 node_name = "女巫小屋"
+node_desc = "免费的告知终点的方位。
+花钱的直接展示终点位置。
+多次。"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

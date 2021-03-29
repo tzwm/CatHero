@@ -1,4 +1,4 @@
-extends Area2D
+extends RigidBody2D
 
 signal move_end
 

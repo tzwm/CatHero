@@ -52,6 +52,8 @@ export (int) var level = 1
 # 格子像素
 const map_cell_size = 64
 
+var selected_node = Vector2(0,0)
+
 # 起点位置
 const starting_points = {
 	1: [Vector2(5,5),Vector2(5,6),Vector2(6,5),Vector2(6,6)],
@@ -259,9 +261,6 @@ func create_node_role(x: int, y: int):
 	if node == GameConst.NodeTypeEnum.EMPTY:
 		var type = random_node_type()
 		map_node_data[x][y] = type
-#		if type == GameConst.NodeTypeEnum.MONSTER:
-#			node.set_monster_level(random_monster_level())
-	
 	
 # 实例化地图节点
 func instanc_node(x: int, y: int):
@@ -385,6 +384,7 @@ func get_access_path(start, target):
 		var node = queue.pop_front()
 		
 		var current_node = map_node_data[node.x][node.y]
+		
 		# 如果找到了
 		if node == target:
 			break
@@ -397,7 +397,7 @@ func get_access_path(start, target):
 #	
 	var path = []
 	var p_node = target
-	while from[p_node]:
+	while from[p_node] != null:
 		path.push_front(p_node)
 		p_node = from[p_node]
 	
@@ -409,17 +409,27 @@ func _on_TileMap_click_cell(pos):
 	if pos.x as int % 2 == 0 && pos.y as int % 2 == 0:
 		var target = cell_to_node(pos)
 		if target.x >= 0 && target.x < map_size.x && target.y >= 0 && target.y < map_size.y:
-			var current = $Player.node_pos
-			var path = get_access_path(current, target)
-			if path.size() > 1:
-				if !$Player.is_moving:
-					$Player.node_pos = target
-					player_move(path, target)
+			selected_node = target
+			var node = map_node_data[target.x][target.y]
+			$CanvasLayer/Panel/Name.text = node.node_name
+			$CanvasLayer/Panel/Desc.text = node.node_desc
 					
-			
-		
-
-
 
 func _on_Player_move_end(target: Vector2):
 	update_visible_state(target, visible_area)
+
+
+func _on_Go_pressed():
+	
+	var current = $Player.node_pos
+	if selected_node == current:
+		return
+	
+	var path = get_access_path(current, selected_node)
+	
+	if path.size() < 1:
+		return
+	
+	if !$Player.is_moving:
+		$Player.node_pos = selected_node
+		player_move(path, selected_node)

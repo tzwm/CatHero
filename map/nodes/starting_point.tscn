@@ -8,7 +8,9 @@
 script = ExtResource( 3 )
 node_type = 11
 node_name = "起点"
-node_visible = 1
+node_desc = "来到一层地图的起点。"
+node_visible = true
+node_visited = true
 
 [node name="Sprite" parent="." index="1"]
 visible = true

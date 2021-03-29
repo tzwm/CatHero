@@ -8,6 +8,7 @@
 script = ExtResource( 3 )
 node_type = 9
 node_name = "神庙"
+node_desc = "付出12金币，复活队伍里所有死去的英雄。50%生命值，3张手牌，遗物带回，等级不变。多次触发。"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )

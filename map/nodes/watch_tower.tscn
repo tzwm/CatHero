@@ -8,6 +8,7 @@
 script = ExtResource( 2 )
 node_type = 6
 node_name = "瞭望塔"
+node_desc = "可以看到再远2步的地图"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )

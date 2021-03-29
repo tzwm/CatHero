@@ -8,6 +8,8 @@
 script = ExtResource( 3 )
 node_type = 12
 node_name = "终点"
+node_desc = "离开一张地图，到下一层地图。
+终点放着英雄们要收集的神器。"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
