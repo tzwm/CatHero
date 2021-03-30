@@ -58,6 +58,8 @@ func _end_combat():
 
 func _combat_win():
 	print("win")
+	get_tree().get_root().remove_child(self)
+	Global.MapIndex.show()
 
 
 func _on_NextButton_button_down():
