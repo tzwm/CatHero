@@ -3,13 +3,18 @@ class_name Combat
 
 export(PackedScene) var MonsterModel
 
-var hero_attack : int
-var hero_defend : int
+var hero_attack: int
+var hero_defend: int
+var monster
 
-onready var monster = MonsterModel.instance()
+func init(_monster):
+	monster = _monster
 
 func _ready():
 	Global.Combat = self
+	if !monster:
+		monster = MonsterModel.instance()
+
 	add_child(monster)
 	hero_attack = 0
 	hero_defend = 0
