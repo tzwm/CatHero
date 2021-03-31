@@ -42,4 +42,4 @@ func set_visible(state: bool):
 	$Sprite.visible = state
 
 func _on_MapNodeBase_body_entered(body):
-	print(body, node_type)
+	print('+++++', body)

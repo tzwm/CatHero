@@ -1,12 +1,8 @@
-extends Node2D
+extends ViewportContainer
 
-onready var world = $CanvasLayer/VBoxContainer/HBoxContainer/MapArea/Viewport
+onready var tile_map = $Viewport/TileMap
 
-onready var tile_map = $CanvasLayer/VBoxContainer/HBoxContainer/MapArea/Viewport/TileMap
-
-onready var player = $CanvasLayer/VBoxContainer/HBoxContainer/MapArea/Viewport/Player
-
-onready var panel = $CanvasLayer/VBoxContainer/HBoxContainer/Panel
+onready var player = $Viewport/Player
 
 const GameConst = preload("res://game_const.gd")
 
@@ -82,22 +78,21 @@ const monster_level_range = {
 }
 
 enum Tile {
-	None = 0,
+	None = 0, 
 	Monster = 2,
-	RoadH = 3,
-	RoadV = 4,
-	RoadRT = 5,
-	RoadLT = 6,
-	RoadCross = 7,
-
+	RoadH = 3, 
+	RoadV = 4, 
+	RoadRT = 5, 
+	RoadLT = 6, 
+	RoadCross = 7, 
+	
 }
 
 func _ready():
-	Global.MapIndex = self
-	print('level:', level)
 	new_game()
-
-
+	var rect = get_rect()
+	$Viewport.size = rect.size
+	
 # 获取某个点周围的所有点
 # 从左上角开始，顺时针一周，处理可能越界的点
 # [x-1,y-1] [x , y-1] [x+1,y-1]
@@ -122,14 +117,14 @@ func get_around_point(x, y):
 	if x-1>=0:
 		list.append(Vector2(x-1, y))
 	return list
-
+	
 # 从数组中随机取n个元素
 func rand_from_array(arr: Array, num: int):
-
+	
 	if(num >= arr.size()):
 		return arr;
 	var new_arr = []
-
+	
 	for i in num:
 		var r = randi_range(0, arr.size())
 		new_arr.append(arr[r])
@@ -139,7 +134,7 @@ func rand_from_array(arr: Array, num: int):
 # 生成 from 到 to 之间的整数
 func randi_range(from: int, to: int):
 	return randi() % (to - from) + from
-
+	
 # 将节点位置映射到地图单元格位置
 func node_to_cell(pos):
 	return pos * 2
@@ -151,51 +146,51 @@ func node_to_position(node_pos):
 	pos.x += map_cell_size / 2
 	pos.y += map_cell_size / 2
 	return pos
-
-# 将地图单元格位置映射到节点位置
+	
+# 将地图单元格位置映射到节点位置	
 func cell_to_node(pos):
 	return pos / 2
-
+	
 # 计算单个节点和周围节点的关系，并随机连接
 func calc_node_connection(x, y):
 	# 当前节点
 	var current_node = map_node_data[x][y]
-
+	
 	# 获取周围坐标列表
 	var point_list = get_around_point(x, y)
-
+	
 	# 从候选的邻居节点中，删除已经连接的节点
 	for next_point in current_node.next_node_list:
 		var index = point_list.find(next_point)
 		if index > -1:
 			point_list.remove(index)
-
+	
 	# 连接该节点的节点数量
 	var node_count = current_node.next_node_list.size()
 	# 约定连接节点数量在2到4之间，去除掉已经存在的节点，剩下需要生成的数量
 	var need_count  = max(0, randi_range(2, 4) - node_count)
 	# 需要连接的点的坐标
 	var connect_point = rand_from_array(point_list, need_count)
-
+	
 	for point in connect_point:
 		# 邻居节点
 		var node = map_node_data[point.x][point.y]
 		current_node.add_next_node(node.node_pos)
 		node.add_next_node(Vector2(x, y))
-
+	
 # 根据节点间关系，生成路径
 func create_road(x: int, y: int):
 	# 当前节点
 	var current_node = map_node_data[x][y]
-
+	
 	var tile_id = tile_map.tile_set.find_tile_by_name('map_node_base')
-#
+#	
 	map_data[2*x][2*y] = tile_id
 	# 计算道路
 	for point in current_node.next_node_list:
 		var offset_x = point.x + x
 		var offset_y = point.y + y
-
+		
 		# 水平 ——
 		if point.x == x:
 			map_data[offset_x][offset_y] = Tile.RoadV
@@ -214,21 +209,21 @@ func create_road(x: int, y: int):
 				map_data[offset_x][offset_y] = Tile.RoadRT
 			elif map_data[offset_x][offset_y] != Tile.RoadRT:
 				map_data[offset_x][offset_y] = Tile.RoadCross
-
-
+		
+	
 # 创建起点和终点
 func create_start_and_end():
 	var s_points = starting_points[level]
 	var s_index = randi_range(0, s_points.size())
 	var start_point = s_points[s_index]
 	map_node_data[start_point.x][start_point.y] = GameConst.NodeTypeEnum.STARTING_POINT
-
+	
 	var d_points = destinations[level]
-
+	
 	var d_index = randi_range(0, d_points.size())
 	var end_point = destinations[level][d_index]
 	map_node_data[end_point.x][end_point.y] = GameConst.NodeTypeEnum.DESTINATION
-
+	
 	return {
 		"start_point": start_point,
 		"end_point": end_point
@@ -261,14 +256,14 @@ func random_node_type():
 func random_monster_level():
 	var level_range = monster_level_range[level]
 	return randi_range(level_range[0], level_range[1]+1)
-
+	
 # 生成节点的类型
 func create_node_role(x: int, y: int):
 	var node = map_node_data[x][y]
 	if node == GameConst.NodeTypeEnum.EMPTY:
 		var type = random_node_type()
 		map_node_data[x][y] = type
-
+	
 # 实例化地图节点
 func instanc_node(x: int, y: int):
 	var node = map_node_data[x][y]
@@ -278,73 +273,65 @@ func instanc_node(x: int, y: int):
 	instance.position = pos
 	if node ==  GameConst.NodeTypeEnum.MONSTER:
 		instance.level = random_monster_level()
-
+		
 	map_node_data[x][y] = instance
-	world.add_child(instance)
+	$Viewport.add_child(instance)
 	
 func create_map(): 
 	map_data.clear()
 	map_node_data.clear()
-
+	
 	randomize()
-
+	
 	# 初始化地图数据，有路径信息
 	for x in map_with_road_size.x:
 		map_data.append([])
 		for y in map_with_road_size.y:
 			map_data[x].append(0)
-
+			
 	# 生成初始地图节点
 	for x in map_size.x:
 		map_node_data.append([])
 		for y in map_size.y:
 #			var node = MapNode.new(x, y, MapNode.NodeTypeEnum.EMPTY)
-			map_node_data[x].append(GameConst.NodeTypeEnum.EMPTY)
-
+			map_node_data[x].append(GameConst.NodeTypeEnum.EMPTY)	
+	
 	# 生成起点和终点
 	var start_and_end = create_start_and_end()
-
+	
 	# 生成随机的地图节点
 	for x in map_size.x:
 		for y in map_size.y:
 			create_node_role(x, y)
-
+	
 	# 实例化场景节点
 	for x in map_size.x:
 		for y in map_size.y:
 			instanc_node(x, y)
-
+	
 	# 生成节点间的连接关系
 	for x in map_size.x:
 		for y in map_size.y:
 			calc_node_connection(x, y)
-
-
+	
+	
 	# 生成路径
 	for x in map_size.x:
 		for y in map_size.y:
 			create_road(x, y)
 
-#	var temp=[]
-#	for x in map_size.x:
-#		for y in map_size.y:
-#			var node = map_node_data[x][y]
-#			temp.append({"x":node.x, "y": node.y, "node_type": node.node_type, 'monster_level': node.monster_level, 'next_node_list': node.next_node_list})
-#
-#	print(temp)
-
 	# 渲染路径和节点
 	for x in range(map_with_road_size.x):
 		for y in range(map_with_road_size.y):
 			tile_map.set_cell(x, y, map_data[x][y])
-
-
+	
+	
 	var start = start_and_end["start_point"];
-
+	
 	player_to_cell(start)
 	update_visible_state(start, visible_area)
 
-func player_to_cell(node_pos):
+func player_to_cell(node_pos): 
 	var pos = node_to_position(node_pos)
 	player.node_pos = node_pos
 	player.position = pos
@@ -361,11 +348,11 @@ func new_game():
 
 func end_game():
 	# 销毁地图节点
-	world.get_tree().call_group("map_node", "queue_free")
+	$Viewport.get_tree().call_group("map_node", "queue_free")
 	
 # 更新当前节点周围2格的视野
 func update_visible_state(pos: Vector2, n: int):
-
+	
 	if(n<=0):
 		return
 	var around_pos = get_around_point(pos.x, pos.y)
@@ -373,40 +360,40 @@ func update_visible_state(pos: Vector2, n: int):
 		var node = map_node_data[pos.x][pos.y]
 		node.set_visible(true)
 		update_visible_state(node.node_pos, n-1)
-
+	
 # 获取当前点到目标点的路径
 func get_access_path(start, target):
 	var visitied = []
 	var queue = []
-
+	
 	# 查找的路径上某个点的上一个节点
 	var from = {}
 	from[start] = null
 	from[target] = null
 	visitied.append(start)
 	queue.append(start)
-
+	
 	while queue.size() > 0:
 		var node = queue.pop_front()
-
+		
 		var current_node = map_node_data[node.x][node.y]
-
+		
 		# 如果找到了
 		if node == target:
 			break
-
+			
 		for next in current_node.next_node_list:
 			if !visitied.has(next) && map_node_data[next.x][next.y].node_visible:
 				visitied.append(next)
 				queue.append(next)
 				from[next] = node
-#
+#	
 	var path = []
 	var p_node = target
 	while from[p_node] != null:
 		path.push_front(p_node)
 		p_node = from[p_node]
-
+	
 	path.push_front(start)
 	return path
 
@@ -418,25 +405,23 @@ func _on_TileMap_click_cell(pos):
 			var node = map_node_data[target.x][target.y]
 			if node.node_visible:
 				selected_node = target
-				panel.get_node("Name").text = node.node_name
-				panel.get_node("Desc").text = node.node_desc
-					
+				$"../Panel".set_info(node.node_name, node.node_desc)
 
 func _on_Player_move_end(target: Vector2):
 	update_visible_state(target, visible_area)
 
 
-func _on_Go_pressed():
-	
+func _on_Panel_move():
 	var current = player.node_pos
 	if selected_node == current:
 		return
-
+	
 	var path = get_access_path(current, selected_node)
-
+	
 	if path.size() < 1:
 		return
 	
 	if !player.is_moving:
 		player.node_pos = selected_node
 		player_move(path, selected_node)
+
