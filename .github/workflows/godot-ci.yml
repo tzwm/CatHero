@@ -36,12 +36,13 @@ jobs:
       # Installing rsync is needed in order to deploy to GitHub Pages. Without it, the build will fail.
       - name: Install rsync 📚
         run: |
-          apt-get update && apt-get install -y rsync
+          apt-get update && apt-get install -y rsync ssh-client
       - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
-          GITHUB_TOKEN: ${{ secrets.PAGE_T }}
-          REPOSITORY_NAME: tzwm/cat_hero_pages
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build/web # The folder the action should deploy.
+          ssh-key: ${{ secrets.PAGE_DEPLOY_KEY }}
+          #github_token: ${{ secrets.PAGE_T }}
+          repository-name: tzwm/cat_hero_pages
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build/web # The folder the action should deploy.
 
