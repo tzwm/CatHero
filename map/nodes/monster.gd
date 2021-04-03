@@ -15,7 +15,7 @@ func _on_MapNodeBase_body_entered(body):
 	var combat = Combat.instance()
 	combat.init(monster)
 	get_tree().get_root().add_child(combat)
-	Global.MapIndex.hide()
+#	Global.MapIndex.hide()
 	print('-----', body, level)
 
 func _get_all_monster_data_files() -> Array:

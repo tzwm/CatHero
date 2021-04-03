@@ -3,3 +3,6 @@ extends Node
 
 var Combat
 var MapIndex
+
+func hide():
+	print('hide')

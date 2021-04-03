@@ -23,6 +23,9 @@ export(Vector2) var node_pos
 # 是否已经被访问过
 export(bool) var node_visited
 
+# 节点被访问的次数限制，默认为一次，如果为-1，则是无限次
+export(int) var node_visit_limit = 1
+
 # 下一步的可选节点
 var next_node_list = []
 
@@ -42,4 +45,13 @@ func set_visible(state: bool):
 	$Sprite.visible = state
 
 func _on_MapNodeBase_body_entered(body):
-	print('+++++', body)
+	print(body)
+	# 访问一次，减少一次课访问次数
+	if node_visit_limit > 0:
+		node_visit_limit -= 1
+
+	
+# 当前节点是否可以触发事件
+func can_trigger():
+	return node_visit_limit > 0 || node_visit_limit == -1
+	

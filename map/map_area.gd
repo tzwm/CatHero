@@ -1,5 +1,7 @@
 extends ViewportContainer
 
+signal node_selected
+
 onready var tile_map = $Viewport/TileMap
 
 onready var player = $Viewport/Player
@@ -321,9 +323,9 @@ func create_map():
 			create_road(x, y)
 
 	# 渲染路径和节点
-	for x in range(map_with_road_size.x):
-		for y in range(map_with_road_size.y):
-			tile_map.set_cell(x, y, map_data[x][y])
+#	for x in range(map_with_road_size.x):
+#		for y in range(map_with_road_size.y):
+#			tile_map.set_cell(x, y, map_data[x][y])
 	
 	
 	var start = start_and_end["start_point"];
@@ -350,16 +352,34 @@ func end_game():
 	# 销毁地图节点
 	$Viewport.get_tree().call_group("map_node", "queue_free")
 	
+
 # 更新当前节点周围2格的视野
 func update_visible_state(pos: Vector2, n: int):
 	
 	if(n<=0):
 		return
 	var around_pos = get_around_point(pos.x, pos.y)
-	for pos in around_pos:
-		var node = map_node_data[pos.x][pos.y]
+	
+	var road_pos_list = []
+	
+	for p in around_pos:
+		road_pos_list.append(p+pos)
+		var node = map_node_data[p .x][p .y]
 		node.set_visible(true)
 		update_visible_state(node.node_pos, n-1)
+	
+	
+	# 获取当前点周围所有的道路坐标
+	for p in around_pos:
+		for q in around_pos:
+			if p != q && !road_pos_list.has(p + q):
+				road_pos_list.append(p + q)
+				
+	for p in road_pos_list:
+		tile_map.set_cell(p.x, p.y, map_data[p.x][p.y])
+	
+	
+	
 	
 # 获取当前点到目标点的路径
 func get_access_path(start, target):
@@ -405,7 +425,8 @@ func _on_TileMap_click_cell(pos):
 			var node = map_node_data[target.x][target.y]
 			if node.node_visible:
 				selected_node = target
-				$"../Panel".set_info(node.node_name, node.node_desc)
+				emit_signal('node_selected', node)
+				$Viewport/Selected.position = node_to_position(target)
 
 func _on_Player_move_end(target: Vector2):
 	update_visible_state(target, visible_area)
@@ -416,12 +437,12 @@ func _on_Panel_move():
 	if selected_node == current:
 		return
 	
+	print(current, selected_node)
 	var path = get_access_path(current, selected_node)
-	
+	print(path)
 	if path.size() < 1:
 		return
 	
 	if !player.is_moving:
 		player.node_pos = selected_node
 		player_move(path, selected_node)
-

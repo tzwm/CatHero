@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/art/m6.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/m1.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/road1.png" type="Texture" id=20]
 [ext_resource path="res://assets/art/map_node.png" type="Texture" id=21]
 [ext_resource path="res://map/map_area.gd" type="Script" id=22]
+[ext_resource path="res://assets/art/selected.png" type="Texture" id=23]
 
 [sub_resource type="TileSet" id=1]
 2/name = "monster.jpeg 2"
@@ -274,6 +275,14 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="MapArea" type="ViewportContainer"]
 margin_right = 1437.0
 margin_bottom = 1080.0
@@ -323,5 +332,8 @@ drag_margin_right = 0.8
 drag_margin_bottom = 0.8
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Selected" type="AnimatedSprite" parent="Viewport"]
+frames = SubResource( 4 )
 [connection signal="click_cell" from="Viewport/TileMap" to="." method="_on_TileMap_click_cell"]
 [connection signal="move_end" from="Viewport/Player" to="." method="_on_Player_move_end"]
