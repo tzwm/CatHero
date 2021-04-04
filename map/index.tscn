@@ -21,26 +21,25 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 margin_right = 1920.0
-margin_bottom = 1080.0
+margin_bottom = 704.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MapArea" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_bottom = 704.0
 
 [node name="Panel" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_bottom = 704.0
 mouse_default_cursor_shape = 0
 size_flags_vertical = 3
 
-[node name="Bonfire" parent="CanvasLayer" instance=ExtResource( 3 )]
-
-[node name="Team" parent="." instance=ExtResource( 24 )]
-visible = false
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 1952.0
-margin_bottom = 404.0
+[node name="Team" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 24 )]
+margin_top = 708.0
+margin_bottom = 1080.0
 mouse_filter = 1
+
+[node name="Bonfire" parent="CanvasLayer" instance=ExtResource( 3 )]
 [connection signal="node_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/MapArea" to="CanvasLayer/VBoxContainer/HBoxContainer/Panel" method="_on_MapArea_node_selected"]
 [connection signal="move" from="CanvasLayer/VBoxContainer/HBoxContainer/Panel" to="CanvasLayer/VBoxContainer/HBoxContainer/MapArea" method="_on_Panel_move"]
 [connection signal="rest" from="CanvasLayer/VBoxContainer/HBoxContainer/Panel" to="CanvasLayer/Bonfire" method="_on_Panel_rest"]

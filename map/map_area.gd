@@ -50,9 +50,6 @@ const map_data = []
 # 可见区域范围
 const visible_area = 1
 
-# 当前关卡
-export (int) var level = 1
-
 # 格子像素
 const map_cell_size = 64
 
@@ -94,6 +91,7 @@ func _ready():
 	new_game()
 	var rect = get_rect()
 	$Viewport.size = rect.size
+
 	
 # 获取某个点周围的所有点
 # 从左上角开始，顺时针一周，处理可能越界的点
@@ -215,15 +213,15 @@ func create_road(x: int, y: int):
 	
 # 创建起点和终点
 func create_start_and_end():
-	var s_points = starting_points[level]
+	var s_points = starting_points[Global.level]
 	var s_index = randi_range(0, s_points.size())
 	var start_point = s_points[s_index]
 	map_node_data[start_point.x][start_point.y] = GameConst.NodeTypeEnum.STARTING_POINT
 	
-	var d_points = destinations[level]
+	var d_points = destinations[Global.level]
 	
 	var d_index = randi_range(0, d_points.size())
-	var end_point = destinations[level][d_index]
+	var end_point = destinations[Global.level][d_index]
 	map_node_data[end_point.x][end_point.y] = GameConst.NodeTypeEnum.DESTINATION
 	
 	return {
@@ -256,7 +254,7 @@ func random_node_type():
 
 # 随机怪物等级
 func random_monster_level():
-	var level_range = monster_level_range[level]
+	var level_range = monster_level_range[Global.level]
 	return randi_range(level_range[0], level_range[1]+1)
 	
 # 生成节点的类型
