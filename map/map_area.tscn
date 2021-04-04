@@ -287,6 +287,7 @@ animations = [ {
 margin_right = 1437.0
 margin_bottom = 1080.0
 grow_horizontal = 0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 stretch = true
@@ -316,7 +317,6 @@ script = ExtResource( 7 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "up"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport/Player"]

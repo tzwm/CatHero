@@ -7,6 +7,8 @@
 margin_left = 1441.0
 margin_right = 1920.0
 margin_bottom = 1080.0
+mouse_filter = 0
+mouse_default_cursor_shape = 4
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 __meta__ = {
@@ -41,14 +43,14 @@ __meta__ = {
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 margin_top = 542.0
 margin_right = 479.0
-margin_bottom = 577.0
+margin_bottom = 591.0
 grow_horizontal = 0
 size_flags_vertical = 2
 collapsed = true
 
 [node name="Rest" type="Button" parent="HSplitContainer"]
 margin_right = 160.0
-margin_bottom = 35.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 160, 0 )
 custom_fonts/font = ExtResource( 1 )
 text = "篝火时刻"
@@ -59,7 +61,7 @@ __meta__ = {
 [node name="Go" type="Button" parent="HSplitContainer"]
 margin_left = 172.0
 margin_right = 479.0
-margin_bottom = 35.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 160, 0 )
 custom_fonts/font = ExtResource( 1 )
 text = "前进"
