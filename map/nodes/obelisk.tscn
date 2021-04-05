@@ -7,6 +7,8 @@
 [node name="Obelisk" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 node_type = 8
+node_name = "方尖碑"
+node_desc = "付出代价完成祈祷，获得神奇的奖励"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )

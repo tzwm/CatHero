@@ -71,7 +71,7 @@ const destinations = {
 
 # 怪物等级
 const monster_level_range = {
-	1: [1,6],
+	1: [2,6],
 	2: [3,8],
 	3: [5,10],
 }
@@ -185,7 +185,7 @@ func create_road(x: int, y: int):
 	
 	var tile_id = tile_map.tile_set.find_tile_by_name('map_node_base')
 #	
-	map_data[2*x][2*y] = tile_id
+#	map_data[2*x][2*y] = tile_id
 	# 计算道路
 	for point in current_node.next_node_list:
 		var offset_x = point.x + x
@@ -272,7 +272,7 @@ func instanc_node(x: int, y: int):
 	var pos = node_to_position(instance.node_pos)
 	instance.position = pos
 	if node ==  GameConst.NodeTypeEnum.MONSTER:
-		instance.level = random_monster_level()
+		instance.set_monster_level(random_monster_level())
 		
 	map_node_data[x][y] = instance
 	$Viewport.add_child(instance)
@@ -320,12 +320,6 @@ func create_map():
 		for y in map_size.y:
 			create_road(x, y)
 
-	# 渲染路径和节点
-#	for x in range(map_with_road_size.x):
-#		for y in range(map_with_road_size.y):
-#			tile_map.set_cell(x, y, map_data[x][y])
-	
-	
 	var start = start_and_end["start_point"];
 	
 	player_to_cell(start)
@@ -435,7 +429,7 @@ func _on_Panel_move():
 	if selected_node == current:
 		return
 	
-	print(current, selected_node)
+	print('points', current, selected_node)
 	var path = get_access_path(current, selected_node)
 	print(path)
 	if path.size() < 1:

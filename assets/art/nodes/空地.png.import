@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m2.png-883f651394d34480546c87c7bcbe934c.stex"
+path="res://.import/空地.png-bf2b9392a70250f143342614b02c0163.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/m2.png"
-dest_files=[ "res://.import/m2.png-883f651394d34480546c87c7bcbe934c.stex" ]
+source_file="res://assets/art/nodes/空地.png"
+dest_files=[ "res://.import/空地.png-bf2b9392a70250f143342614b02c0163.stex" ]
 
 [params]
 

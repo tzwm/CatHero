@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/空白.png-da37b5a12079a91f5e10f5cc89668d13.stex"
+path="res://.import/怪物10.png-91e24661a2d473560b0e32d2cd677a8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/nodes/空白.png"
-dest_files=[ "res://.import/空白.png-da37b5a12079a91f5e10f5cc89668d13.stex" ]
+source_file="res://assets/art/nodes/怪物10.png"
+dest_files=[ "res://.import/怪物10.png-91e24661a2d473560b0e32d2cd677a8a.stex" ]
 
 [params]
 

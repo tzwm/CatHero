@@ -1,72 +1,175 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://map/panel.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/ui/btn2.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/ui/btn1.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/ui/fire.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/火把.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/金币.png" type="Texture" id=7]
 
-[node name="Panel" type="VBoxContainer"]
-margin_left = 1441.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-mouse_filter = 0
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/FZLTHJW.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = SubResource( 1 )
+
+[node name="Panel" type="MarginContainer"]
+anchor_bottom = 1.0
 mouse_default_cursor_shape = 4
 size_flags_horizontal = 3
+custom_constants/margin_top = 25
+custom_constants/margin_bottom = 25
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Info" type="Panel" parent="."]
-margin_right = 479.0
-margin_bottom = 538.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 25.0
+margin_right = 396.0
+margin_bottom = 1055.0
+
+[node name="TopInfo" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 396.0
+margin_bottom = 60.0
+
+[node name="Torch" type="TextureRect" parent="VBoxContainer/TopInfo"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TorchCount" type="Label" parent="VBoxContainer/TopInfo"]
+margin_left = 64.0
+margin_top = 8.0
+margin_right = 87.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="TextureRect" parent="VBoxContainer/TopInfo"]
+margin_left = 91.0
+margin_right = 151.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="CoinCount" type="Label" parent="VBoxContainer/TopInfo"]
+margin_left = 155.0
+margin_top = 8.0
+margin_right = 178.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "0"
+
+[node name="Info" type="Panel" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 396.0
+margin_bottom = 966.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Name" type="Label" parent="Info"]
+[node name="Name" type="Label" parent="VBoxContainer/Info"]
+anchor_right = 1.0
+anchor_bottom = 0.1
 margin_top = 30.0
-margin_right = 479.0
 custom_fonts/font = ExtResource( 1 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Desc" type="Label" parent="Info"]
-anchor_top = 0.25
+[node name="Desc" type="Label" parent="VBoxContainer/Info"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 120.0
+margin_right = -20.0
+margin_bottom = -20.0
 custom_fonts/font = ExtResource( 1 )
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
-margin_top = 542.0
-margin_right = 479.0
-margin_bottom = 591.0
-grow_horizontal = 0
-size_flags_vertical = 2
-collapsed = true
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+margin_top = 970.0
+margin_right = 396.0
+margin_bottom = 1030.0
+mouse_filter = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="Rest" type="Button" parent="HSplitContainer"]
-margin_right = 160.0
-margin_bottom = 49.0
-rect_min_size = Vector2( 160, 0 )
-custom_fonts/font = ExtResource( 1 )
+[node name="Rest" type="TextureButton" parent="VBoxContainer/HSplitContainer"]
+margin_right = 192.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HSplitContainer/Rest"]
+anchor_left = 0.2
+anchor_right = 0.8
+anchor_bottom = 1.0
+margin_right = 0.399994
+rect_scale = Vector2( 0.990857, 1 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fire" type="TextureRect" parent="VBoxContainer/HSplitContainer/Rest/HSplitContainer"]
+margin_right = 23.0
+margin_bottom = 60.0
+texture = ExtResource( 5 )
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/Rest/HSplitContainer"]
+margin_left = 35.0
+margin_top = 15.0
+margin_right = 131.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
 text = "篝火时刻"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Go" type="Button" parent="HSplitContainer"]
-margin_left = 172.0
-margin_right = 479.0
-margin_bottom = 49.0
-rect_min_size = Vector2( 160, 0 )
-custom_fonts/font = ExtResource( 1 )
+[node name="Go" type="TextureButton" parent="VBoxContainer/HSplitContainer"]
+margin_left = 204.0
+margin_right = 396.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/Go"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
 text = "前进"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HSplitContainer/Rest" to="." method="_on_Rest_pressed"]
-[connection signal="pressed" from="HSplitContainer/Go" to="." method="_on_Go_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/Rest" to="." method="_on_Rest_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/Go" to="." method="_on_Go_pressed"]

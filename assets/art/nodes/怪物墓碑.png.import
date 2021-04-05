@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m8.png-f7775f27012b0266702ed99b173cf309.stex"
+path="res://.import/怪物墓碑.png-815142031bd98caa90077748039993f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/m8.png"
-dest_files=[ "res://.import/m8.png-f7775f27012b0266702ed99b173cf309.stex" ]
+source_file="res://assets/art/nodes/怪物墓碑.png"
+dest_files=[ "res://.import/怪物墓碑.png-815142031bd98caa90077748039993f0.stex" ]
 
 [params]
 

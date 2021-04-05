@@ -11,6 +11,15 @@ script = ExtResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.898039, 0.898039, 0.898039, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -21,23 +30,28 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 margin_right = 1920.0
-margin_bottom = 704.0
+margin_bottom = 1080.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.7
 
 [node name="MapArea" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
-margin_bottom = 704.0
 
 [node name="Panel" parent="CanvasLayer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
-margin_bottom = 704.0
+anchor_bottom = 0.0
+margin_left = 1441.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 mouse_default_cursor_shape = 0
 size_flags_vertical = 3
 
 [node name="Team" parent="CanvasLayer/VBoxContainer" instance=ExtResource( 24 )]
-margin_top = 708.0
+visible = false
+margin_top = 681.0
 margin_bottom = 1080.0
 mouse_filter = 1
+size_flags_vertical = 3
 
 [node name="Bonfire" parent="CanvasLayer" instance=ExtResource( 3 )]
 [connection signal="node_selected" from="CanvasLayer/VBoxContainer/HBoxContainer/MapArea" to="CanvasLayer/VBoxContainer/HBoxContainer/Panel" method="_on_MapArea_node_selected"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m9.png-c3875f2f994dcbc5a2b5d3014fdf04fa.stex"
+path="res://.import/btn2.png-d8190a797581bb8f18d41809463c3748.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/m9.png"
-dest_files=[ "res://.import/m9.png-c3875f2f994dcbc5a2b5d3014fdf04fa.stex" ]
+source_file="res://assets/art/ui/btn2.png"
+dest_files=[ "res://.import/btn2.png-d8190a797581bb8f18d41809463c3748.stex" ]
 
 [params]
 

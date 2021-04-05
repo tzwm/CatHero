@@ -1,7 +1,11 @@
-extends VBoxContainer
+extends MarginContainer
 
 signal move
 signal rest
+
+func _ready():
+	$VBoxContainer/TopInfo/TorchCount.text = String(Global.torch)
+	Global.connect("change_torch", self, "_on_Change_torch")
 
 func set_info(name, desc):
 	$Info/Name.text = name
@@ -15,5 +19,10 @@ func _on_Rest_pressed():
 
 
 func _on_MapArea_node_selected(node):
-	$Info/Name.text = node.node_name
-	$Info/Desc.text = node.node_desc
+	$VBoxContainer/Info/Name.text = node.node_name
+	$VBoxContainer/Info/Desc.text = node.node_desc
+
+func _on_Change_torch(count: int):
+	$VBoxContainer/TopInfo/TorchCount.text = String(count)
+	
+	
