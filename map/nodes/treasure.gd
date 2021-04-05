@@ -2,9 +2,11 @@ extends MapNodeBase
 
 const TreasureUsed = preload("res://assets/art/nodes/宝箱2.png")
 
-func _on_MapNodeBase_body_entered(body):
+func visit():
 	var can = .can_trigger()
 	if can:
 		$Sprite.texture = TreasureUsed;
-	._on_MapNodeBase_body_entered(body)
+		# TODO 需要随机金币或者遗物
+		Global.coin_change(Global.get_coin_count())
+		.visit()
 	

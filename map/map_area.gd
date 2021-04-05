@@ -91,6 +91,8 @@ func _ready():
 	new_game()
 	var rect = get_rect()
 	$Viewport.size = rect.size
+	
+	Global.connect("watch_towner", self, "_on_Watch_towner")
 
 	
 # 获取某个点周围的所有点
@@ -395,7 +397,8 @@ func get_access_path(start, target):
 			break
 			
 		for next in current_node.next_node_list:
-			if !visitied.has(next) && map_node_data[next.x][next.y].node_visible:
+			var next_node = map_node_data[next.x][next.y]
+			if !visitied.has(next) && next_node.node_visible:
 				visitied.append(next)
 				queue.append(next)
 				from[next] = node
@@ -409,6 +412,17 @@ func get_access_path(start, target):
 	path.push_front(start)
 	return path
 
+# 检测路径是否被阻拦
+func check_path_block(path: Array):
+	
+	for i in range(1, path.size() - 1):
+		var p = path[i]
+		var node = map_node_data[p.x][p.y]
+		if !node.can_pass():
+			return true
+	
+	return false
+	
 # 点击地图上的点
 func _on_TileMap_click_cell(pos):
 	if pos.x as int % 2 == 0 && pos.y as int % 2 == 0:
@@ -422,6 +436,8 @@ func _on_TileMap_click_cell(pos):
 
 func _on_Player_move_end(target: Vector2):
 	update_visible_state(target, visible_area)
+	map_node_data[target.x][target.y].visit()
+	Global.torch_change(-1)
 
 
 func _on_Panel_move():
@@ -429,12 +445,16 @@ func _on_Panel_move():
 	if selected_node == current:
 		return
 	
-	print('points', current, selected_node)
 	var path = get_access_path(current, selected_node)
-	print(path)
-	if path.size() < 1:
+	if path.size() <= 1:
 		return
-	
+	if(check_path_block(path)):
+		return
+		
 	if !player.is_moving:
 		player.node_pos = selected_node
 		player_move(path, selected_node)
+
+# 触发了瞭望塔
+func _on_Watch_towner(pos: Vector2):
+	update_visible_state(pos, 2)

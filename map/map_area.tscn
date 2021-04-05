@@ -107,8 +107,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 32, 32 )
+[sub_resource type="CircleShape2D" id=3]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -158,7 +157,6 @@ script = ExtResource( 7 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 2 )
 animation = "up"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Viewport/Player"]

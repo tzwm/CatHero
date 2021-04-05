@@ -44,12 +44,17 @@ func set_visible(state: bool):
 	node_visible = state
 	$Sprite.visible = state
 
-func _on_MapNodeBase_body_entered(_body):
+# 访问当前节点
+func visit():
 	# 访问一次，减少一次课访问次数
 	if node_visit_limit > 0:
 		node_visit_limit -= 1
+		
 		
 # 当前节点是否可以触发事件
 func can_trigger():
 	return node_visit_limit > 0 || node_visit_limit == -1
 	
+# 是否可以路过
+func can_pass():
+	return true
