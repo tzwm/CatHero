@@ -14,7 +14,7 @@ signal watch_towner
 signal witch_hut
 
 
-var Combat
+var CombatScene: Combat
 
 var MapIndex
 

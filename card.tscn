@@ -51,6 +51,7 @@ margin_left = 4.5
 margin_top = 6.0
 margin_right = 124.5
 margin_bottom = 169.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -69,11 +70,13 @@ __meta__ = {
 margin_right = 120.0
 margin_bottom = 5.6
 rect_min_size = Vector2( 0, 5.6 )
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/VBoxContainer"]
 margin_top = 5.0
 margin_right = 120.0
 margin_bottom = 93.0
+mouse_filter = 2
 custom_constants/separation = 0
 alignment = 1
 
@@ -82,6 +85,7 @@ margin_left = 3.0
 margin_right = 27.0
 margin_bottom = 88.0
 rect_min_size = Vector2( 24, 0 )
+mouse_filter = 2
 
 [node name="CardImage" type="MarginContainer" parent="Panel/Panel/VBoxContainer/HBoxContainer"]
 margin_left = 27.0
@@ -95,6 +99,7 @@ size_flags_vertical = 0
 [node name="NinePatchRect" type="TextureRect" parent="Panel/Panel/VBoxContainer/HBoxContainer/CardImage"]
 margin_right = 68.0
 margin_bottom = 88.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
 
@@ -103,12 +108,14 @@ margin_left = 95.0
 margin_right = 117.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 22, 25 )
+mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/Panel/VBoxContainer/HBoxContainer/CharactorImage"]
 margin_right = 22.0
 margin_bottom = 25.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 
@@ -117,12 +124,14 @@ margin_top = 93.0
 margin_right = 120.0
 margin_bottom = 98.5
 rect_min_size = Vector2( 0, 5.5 )
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Panel/Panel/VBoxContainer"]
 margin_top = 98.0
 margin_right = 120.0
 margin_bottom = 98.4
 rect_min_size = Vector2( 0, 0.4 )
+mouse_filter = 2
 color = Color( 0.666667, 0.698039, 0.780392, 1 )
 
 [node name="Control3" type="Control" parent="Panel/Panel/VBoxContainer"]
@@ -130,6 +139,7 @@ margin_top = 98.0
 margin_right = 120.0
 margin_bottom = 103.5
 rect_min_size = Vector2( 0, 5.5 )
+mouse_filter = 2
 
 [node name="Title" type="Label" parent="Panel/Panel/VBoxContainer"]
 margin_top = 103.0

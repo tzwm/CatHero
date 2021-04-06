@@ -33,9 +33,9 @@ func _update_hand_cards_view() -> void:
 func _update_hero_view() -> void:
 	var character_name = GameConst.Character.keys()[hero.character].to_lower()
 	var character_image = load(CHARACTER_ASSET_DIR + character_name + ".png")
-	$Panel/VBoxContainer/HBoxContainer/Avatar.texture = character_image
-	$Panel/VBoxContainer/HBoxContainer/Health.text = "HP %s/%s" % [hero.health_current, hero.health_max]
-	$Panel/VBoxContainer/HBoxContainer/Exp.text = "EXP %s" % [hero.exp_current]
+	$Panel/VBoxContainer/CenterContainer/HBoxContainer/Avatar.texture = character_image
+	$Panel/VBoxContainer/CenterContainer/HBoxContainer/Health.text = "HP %s/%s" % [hero.health_current, hero.health_max]
+	$Panel/VBoxContainer/CenterContainer/HBoxContainer/Exp.text = "EXP %s" % [hero.exp_current]
 	
 	if $Panel/VBoxContainer/Stress.get_child_count() == hero.stress_current:
 		return

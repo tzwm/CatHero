@@ -6,18 +6,23 @@ export(PackedScene) var MonsterModel
 var hero_attack: int
 var hero_defend: int
 var monster
+var heros: Array
+
+var protect_status := false
 
 func init(_monster):
 	monster = _monster
 
 func _ready():
-	Global.Combat = self
+	Global.CombatScene = self
 	if !monster:
 		monster = MonsterModel.instance()
 
 	add_child(monster)
 	hero_attack = 0
 	hero_defend = 0
+	for hero_node in $VBoxContainer/Team/CenterContainer/Heroes.get_children():
+		heros.append(hero_node.hero)
 
 func _process(delta):
 	$VBoxContainer/Top/MonsterAvatar.texture = monster.avatar
@@ -40,10 +45,11 @@ func _end_combat():
 
 	monster.health_current -= hero_attack
 	var remain_damage = monster.attack - hero_defend
-	var hero_count = $VBoxContainer/Team/Heroes.get_child_count()
+	var hero_count = heros.size()
 	var min_damage = ceil(remain_damage * 0.2)
 	var index = 0
-	for hero_node in $VBoxContainer/Team/Heroes.get_children():
+	var health_min = _get_min_health()
+	for hero in heros:
 		var damage: int
 		if index == (hero_count - 1):
 			damage = remain_damage
@@ -51,7 +57,10 @@ func _end_combat():
 			var max_damage = remain_damage - (hero_count - index - 1) * min_damage
 			damage = floor(rand_range(min_damage, max_damage))
 
-		hero_node.hero.get_damage(damage)
+		if protect_status && hero.health_current == health_min:
+			protect_status = false
+		else:	
+			hero.get_damage(damage)
 		remain_damage -= damage
 		index += 1
 
@@ -61,6 +70,13 @@ func _combat_win():
 	get_tree().get_root().remove_child(self)
 	Global.MapIndex.show()
 
-
+func _get_min_health() -> int:
+	var min_health := 9999
+	for hero in heros:
+		if hero.health_current < min_health:
+			min_health = hero.health_current
+	
+	return min_health
+	
 func _on_NextButton_button_down():
 	_end_combat()
