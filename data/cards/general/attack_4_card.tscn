@@ -4,13 +4,13 @@
 [ext_resource path="res://data/attributes/attack_attribute.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/cards/普通攻击.jpg" type="Texture" id=3]
 
-[node name="Attack3Card" type="Node"]
+[node name="Attack4Card" type="Node"]
 script = ExtResource( 1 )
-title = "普通攻击 3"
-description = "攻击力 3"
+title = "普通攻击 4"
+description = "攻击力 4"
 avatar = ExtResource( 3 )
 
 [node name="Attributes" type="Node" parent="."]
 
 [node name="AttackAttribute" parent="Attributes" instance=ExtResource( 2 )]
-attack_value = 3
+attack_value = 4

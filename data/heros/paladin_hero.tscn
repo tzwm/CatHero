@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://model/hero_model.gd" type="Script" id=1]
 [ext_resource path="res://assets/avatar_f.jpg" type="Texture" id=2]
 [ext_resource path="res://data/cards/general/attack_3_card.tscn" type="PackedScene" id=3]
 [ext_resource path="res://data/cards/general/defend_5_card.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/cards/paladin/protect_card.tscn" type="PackedScene" id=5]
+[ext_resource path="res://data/cards/general/attack_4_card.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/cards/general/defend_7_card.tscn" type="PackedScene" id=7]
 
 [node name="PaladinHero" type="Node"]
 script = ExtResource( 1 )
@@ -14,10 +17,12 @@ health_max = 12
 
 [node name="DeckBuilt" type="Node" parent="."]
 
+[node name="ProtectCard" parent="DeckBuilt" instance=ExtResource( 5 )]
+
 [node name="Attack3Card" parent="DeckBuilt" instance=ExtResource( 3 )]
+
+[node name="Attack4Card" parent="DeckBuilt" instance=ExtResource( 6 )]
 
 [node name="Defend5Card" parent="DeckBuilt" instance=ExtResource( 4 )]
 
-[node name="Attack3Card2" parent="DeckBuilt" instance=ExtResource( 3 )]
-
-[node name="Defend5Card2" parent="DeckBuilt" instance=ExtResource( 4 )]
+[node name="Defend7Card" parent="DeckBuilt" instance=ExtResource( 7 )]
