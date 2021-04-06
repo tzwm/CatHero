@@ -1,12 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
 [ext_resource path="res://combat/combat.gd" type="Script" id=3]
 [ext_resource path="res://data/monsters/dove_man.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/art/ui/btn1.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
 
 [node name="Combat" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 0.00012207
+margin_bottom = -336.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,68 +24,129 @@ __meta__ = {
 MonsterModel = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_top = 20.0
 margin_right = 1920.0
-margin_bottom = 708.0
+margin_bottom = 764.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 margin_right = 1920.0
+margin_bottom = 200.0
+
+[node name="Top" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+margin_left = 363.0
+margin_right = 1556.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
+custom_constants/separation = 100
 
-[node name="MonsterAvatar" type="NinePatchRect" parent="VBoxContainer/Top"]
-margin_right = 200.0
+[node name="Panel" type="Panel" parent="VBoxContainer/CenterContainer/Top"]
+margin_right = 400.0
 margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
+rect_min_size = Vector2( 400, 0 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="MonsterAvatar" type="TextureRect" parent="VBoxContainer/CenterContainer/Top"]
+margin_left = 500.0
+margin_right = 693.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 193, 193 )
 texture = ExtResource( 2 )
+expand = true
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/CenterContainer/Top"]
+margin_left = 793.0
+margin_right = 1193.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 400, 0 )
+custom_styles/panel = SubResource( 2 )
+
+[node name="Nickname" type="Label" parent="VBoxContainer/CenterContainer/Top/Panel2"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lv 4 软泥怪"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MonsterAction" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
 margin_top = 204.0
 margin_right = 1920.0
-margin_bottom = 404.0
-rect_min_size = Vector2( 0, 200 )
+margin_bottom = 254.0
 
-[node name="Attack" type="Label" parent="VBoxContainer/MonsterAction"]
-margin_top = 93.0
-margin_right = 60.0
-margin_bottom = 107.0
-text = "Attack 50"
+[node name="MonsterAction" type="HBoxContainer" parent="VBoxContainer/CenterContainer2"]
+margin_left = 627.0
+margin_right = 1292.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_constants/separation = 300
 
-[node name="Health" type="Label" parent="VBoxContainer/MonsterAction"]
-margin_left = 64.0
-margin_top = 93.0
-margin_right = 130.0
-margin_bottom = 107.0
-text = "Defend 50"
+[node name="Attack" type="Label" parent="VBoxContainer/CenterContainer2/MonsterAction"]
+margin_top = 3.0
+margin_right = 181.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "Attack: 50"
 
-[node name="HeroAction" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 408.0
+[node name="Health" type="Label" parent="VBoxContainer/CenterContainer2/MonsterAction"]
+margin_left = 481.0
+margin_top = 3.0
+margin_right = 665.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "Health: 50"
+
+[node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 258.0
 margin_right = 1920.0
-margin_bottom = 608.0
+margin_bottom = 458.0
 rect_min_size = Vector2( 0, 200 )
 
-[node name="Attack" type="Label" parent="VBoxContainer/HeroAction"]
-margin_top = 93.0
-margin_right = 60.0
-margin_bottom = 107.0
-text = "Attack 40"
+[node name="CenterContainer4" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 462.0
+margin_right = 1920.0
+margin_bottom = 522.0
 
-[node name="Defend" type="Label" parent="VBoxContainer/HeroAction"]
-margin_left = 64.0
-margin_top = 84.0
-margin_right = 130.0
-margin_bottom = 115.0
-text = "Defend 40
-"
+[node name="HeroAction" type="HBoxContainer" parent="VBoxContainer/CenterContainer4"]
+margin_left = 374.0
+margin_right = 1545.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 50 )
+custom_constants/separation = 300
 
-[node name="NextButton" type="Button" parent="VBoxContainer/HeroAction"]
-margin_left = 134.0
-margin_right = 176.0
-margin_bottom = 200.0
-text = "Next"
-[connection signal="button_down" from="VBoxContainer/HeroAction/NextButton" to="." method="_on_NextButton_button_down"]
+[node name="Attack" type="Label" parent="VBoxContainer/CenterContainer4/HeroAction"]
+margin_top = 8.0
+margin_right = 181.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "Attack: 40"
+
+[node name="Defend" type="Label" parent="VBoxContainer/CenterContainer4/HeroAction"]
+margin_left = 481.0
+margin_top = 8.0
+margin_right = 679.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+text = "Defend: 40"
+
+[node name="NextButton" type="TextureButton" parent="VBoxContainer/CenterContainer4/HeroAction"]
+margin_left = 979.0
+margin_right = 1171.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer4/HeroAction/NextButton"]
+margin_right = 192.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 1 )
+text = "结束出牌"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_down" from="VBoxContainer/CenterContainer4/HeroAction/NextButton" to="." method="_on_NextButton_button_down"]

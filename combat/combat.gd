@@ -23,11 +23,12 @@ func _ready():
 
 
 func _process(delta):
-	$VBoxContainer/Top/MonsterAvatar.texture = monster.avatar
-	$VBoxContainer/MonsterAction/Attack.text = "Attack: %s" % monster.attack
-	$VBoxContainer/MonsterAction/Health.text = "Health: %s" % monster.health_current
-	$VBoxContainer/HeroAction/Attack.text = "Attack: %s" % hero_attack
-	$VBoxContainer/HeroAction/Defend.text = "Defend: %s" % hero_defend
+	$VBoxContainer/CenterContainer/Top/Panel2/Nickname.text = "Lv %s %s" % [monster.level, monster.nickname]
+	$VBoxContainer/CenterContainer/Top/MonsterAvatar.texture = monster.avatar
+	$VBoxContainer/CenterContainer2/MonsterAction/Attack.text = "Attack: %s" % monster.attack
+	$VBoxContainer/CenterContainer2/MonsterAction/Health.text = "Health: %s" % monster.health_current
+	$VBoxContainer/CenterContainer4/HeroAction/Attack.text = "Attack: %s" % hero_attack
+	$VBoxContainer/CenterContainer4/HeroAction/Defend.text = "Defend: %s" % hero_defend
 
 func add_hero_attack_value(_value: int):
 	hero_attack += _value
