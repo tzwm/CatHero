@@ -339,12 +339,16 @@ func player_move(path: Array, target: Vector2):
 	player.move_with_path(real_pos_path, target)
 	
 func new_game():
+	Global.new_game_level()
+	clear_game()
 	create_map()
 
 
-func end_game():
+func clear_game():
 	# 销毁地图节点
 	$Viewport.get_tree().call_group("map_node", "queue_free")
+	# 清除地图路径
+	tile_map.clear()
 	
 
 # 更新当前节点周围2格的视野
@@ -436,10 +440,15 @@ func _on_TileMap_click_cell(pos):
 
 func _on_Player_move_end(target: Vector2):
 	update_visible_state(target, visible_area)
-	map_node_data[target.x][target.y].visit()
+	var node = map_node_data[target.x][target.y]
+	node.visit()
+		
 	var success = Global.torch_change(-1)
 	if !success:
 		Global.depress_change(1)
+		
+	if node.node_type == GameConst.NodeTypeEnum.DESTINATION:
+		new_game()
 
 
 func _on_Panel_move():

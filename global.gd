@@ -39,7 +39,7 @@ var depress = 0
 const MAX_DEPRESS = 8
 
 # 当前关卡
-var level = 1
+var level = 0
 
 # 玩家当前所处位置
 var player_pos = Vector2(0,0)
@@ -56,10 +56,14 @@ func get_coin_count():
 
 # 重置全局参数
 func reset():
-	level = 1;
+	level = 0;
 	player_pos = Vector2(0, 0)
 
-
+func new_game_level():
+	if level < 3:
+		level += 1
+		
+# 火把变化
 func torch_change(count: int):
 #	火把不够，压抑值+1
 	if torch + count < 0:
@@ -68,6 +72,7 @@ func torch_change(count: int):
 	emit_signal("torch_change", torch)
 	return true
 	
+# 金币变化
 func coin_change(count: int):
 	if coin + count < 0:
 		return false
@@ -76,6 +81,7 @@ func coin_change(count: int):
 	emit_signal("coin_change", torch)
 	return true
 
+# 压抑值变化
 func depress_change(count: int):
 	if depress + count < 0:
 		depress = 0
