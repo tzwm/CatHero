@@ -13,10 +13,12 @@ signal watch_towner
 # 女巫小屋
 signal witch_hut
 
-
+var MainPageScene: CanvasLayer
 var CombatScene: Combat
 
 var MapIndex
+
+var heros := []
 
 # 队伍
 var Team

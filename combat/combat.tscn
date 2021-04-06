@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://team.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
 [ext_resource path="res://combat/combat.gd" type="Script" id=3]
 [ext_resource path="res://data/monsters/dove_man.tscn" type="PackedScene" id=4]
@@ -79,8 +78,4 @@ margin_left = 134.0
 margin_right = 176.0
 margin_bottom = 200.0
 text = "Next"
-
-[node name="Team" parent="VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 612.0
-margin_bottom = 984.0
 [connection signal="button_down" from="VBoxContainer/HeroAction/NextButton" to="." method="_on_NextButton_button_down"]
