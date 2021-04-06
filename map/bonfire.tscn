@@ -10,7 +10,7 @@ font_path = "res://assets/fonts/FZLTHJW.TTF"
 size = 48
 font_data = SubResource( 1 )
 
-[sub_resource type="ButtonGroup" id=4]
+[sub_resource type="ButtonGroup" id=3]
 resource_name = "skill"
 
 [node name="Bonfire" type="PopupDialog"]
@@ -92,7 +92,7 @@ margin_bottom = 51.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 1 )
 pressed = true
-group = SubResource( 4 )
+group = SubResource( 3 )
 text = "继续前进"
 
 [node name="Rest" type="CheckBox" parent="HBoxContainer"]
@@ -101,7 +101,7 @@ margin_right = 340.0
 margin_bottom = 51.0
 size_flags_horizontal = 0
 custom_fonts/font = ExtResource( 1 )
-group = SubResource( 4 )
+group = SubResource( 3 )
 text = "睡一觉"
 
 [node name="Confirm" type="Button" parent="."]

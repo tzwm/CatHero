@@ -444,8 +444,9 @@ func _on_Player_move_end(target: Vector2):
 	node.visit()
 		
 	var success = Global.torch_change(-1)
+	# 没有火把，所有英雄压抑值+1
 	if !success:
-		Global.depress_change(1)
+		Global.Team.change_all_hero_depress(1)
 		
 	if node.node_type == GameConst.NodeTypeEnum.DESTINATION:
 		new_game()

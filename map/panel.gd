@@ -6,10 +6,8 @@ signal rest
 func _ready():
 	_on_Torch_change(Global.torch)
 	_on_Coin_change(Global.coin)
-	_on_Depress_change(Global.depress)
 	Global.connect("torch_change", self, "_on_Torch_change")
 	Global.connect("coin_change", self, "_on_Coin_change")
-	Global.connect("depress_change", self, "_on_Depress_change")
 
 
 func set_info(name, desc):
@@ -32,6 +30,3 @@ func _on_Torch_change(count: int):
 	
 func _on_Coin_change(count: int):
 	$VBoxContainer/TopInfo/CoinCount/Text.text = String(count)
-	
-func _on_Depress_change(count: int):
-	$VBoxContainer/TopInfo/DepressCount/Text.text = String(count)

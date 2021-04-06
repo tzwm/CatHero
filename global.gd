@@ -13,12 +13,6 @@ signal watch_towner
 # 女巫小屋
 signal witch_hut
 
-# 压抑值最大
-signal depress_max
-
-# 压抑值变化
-signal depress_change
-
 
 var Combat
 
@@ -32,11 +26,6 @@ var torch = 10
 
 # 金币数量
 var coin = 10
-
-# 压抑值
-var depress = 0
-# 最大压抑值
-const MAX_DEPRESS = 8
 
 # 当前关卡
 var level = 0
@@ -78,19 +67,7 @@ func coin_change(count: int):
 		return false
 		
 	coin += count
-	emit_signal("coin_change", torch)
+	emit_signal("coin_change", coin)
 	return true
 
-# 压抑值变化
-func depress_change(count: int):
-	if depress + count < 0:
-		depress = 0
-	else:
-		depress += count
-		
-	if depress == MAX_DEPRESS:
-		emit_signal("depress_max")
-	emit_signal("depress_change", depress)
-	
-	
 	

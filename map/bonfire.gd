@@ -7,7 +7,7 @@ func _on_Panel_rest():
 	popup()
 
 func base_func():
-	Global.depress_change(-1)
+	Global.Team.change_all_hero_depress(-1)
 	Global.Team.change_all_hero_health(0.2)
 
 func skill_rest():

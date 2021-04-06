@@ -1,14 +1,80 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://map/nodes/map_node_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/art/nodes/神庙.png" type="Texture" id=2]
 [ext_resource path="res://map/nodes/temple.gd" type="Script" id=3]
+[ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=4]
 
 [node name="Temple" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 node_type = 9
 node_name = "神庙"
 node_desc = "付出12金币，复活队伍里所有死去的英雄。50%生命值，3张手牌，遗物带回，等级不变。多次触发。"
+node_visit_limit = -1
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="2"]
+
+[node name="Popup" type="Popup" parent="CanvasLayer" index="0"]
+visible = true
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Popup" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Popup" index="1"]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 4 )
+text = "是否花费12金币复活所有死去的英雄？"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Popup" index="2"]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.8
+margin_right = 40.0001
+margin_bottom = 56.8
+size_flags_horizontal = 4
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Confirm" type="Button" parent="CanvasLayer/Popup/HBoxContainer" index="0"]
+margin_left = 202.0
+margin_right = 402.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 4 )
+text = "是"
+
+[node name="Cancel" type="Button" parent="CanvasLayer/Popup/HBoxContainer" index="1"]
+margin_left = 406.0
+margin_right = 606.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 4 )
+text = "否"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/Popup/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Popup/HBoxContainer/Cancel" to="." method="_on_Cancel_pressed"]
