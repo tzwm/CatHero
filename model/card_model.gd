@@ -7,6 +7,7 @@ export(GameConst.CardType) var type
 export(GameConst.CardRarity) var rarity
 export(bool) var use_in_bonfire
 export(String) var description
+export(Texture) var avatar
 
 onready var attributes = $Attributes.get_children()
 

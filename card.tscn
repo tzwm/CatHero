@@ -1,9 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://card.gd" type="Script" id=1]
-[ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
+[ext_resource path="res://assets/cards/普通攻击.jpg" type="Texture" id=2]
 [ext_resource path="res://data/cards/general/attack_3_card.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/characters/general.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.968627, 0.952941, 0.847059, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.666667, 0.698039, 0.780392, 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/fonts/FZLTHJW.TTF"
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 6
+font_data = SubResource( 3 )
 
 [node name="Card" type="Control"]
 margin_right = 129.0
@@ -19,63 +41,113 @@ CardModel = ExtResource( 3 )
 margin_right = 129.0
 margin_bottom = 175.0
 mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_right = 129.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 129, 175 )
-mouse_filter = 2
+[node name="Panel" type="Panel" parent="Panel"]
+margin_left = 4.5
+margin_top = 6.0
+margin_right = 124.5
+margin_bottom = 169.0
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CardImage" type="MarginContainer" parent="Panel/VBoxContainer"]
-margin_right = 133.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 129, 100 )
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel"]
+margin_right = 120.0
+margin_bottom = 163.0
 mouse_filter = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer/CardImage"]
-margin_right = 133.0
-margin_bottom = 100.0
+[node name="Control" type="Control" parent="Panel/Panel/VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 5.6
+rect_min_size = Vector2( 0, 5.6 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/VBoxContainer"]
+margin_top = 5.0
+margin_right = 120.0
+margin_bottom = 93.0
+custom_constants/separation = 0
+alignment = 1
+
+[node name="Control" type="Control" parent="Panel/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 3.0
+margin_right = 27.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 24, 0 )
+
+[node name="CardImage" type="MarginContainer" parent="Panel/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 27.0
+margin_right = 95.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 68, 88 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="NinePatchRect" type="TextureRect" parent="Panel/Panel/VBoxContainer/HBoxContainer/CardImage"]
+margin_right = 68.0
+margin_bottom = 88.0
 texture = ExtResource( 2 )
+expand = true
 
-[node name="TopBar" type="HBoxContainer" parent="Panel/VBoxContainer"]
-margin_top = 104.0
-margin_right = 133.0
-margin_bottom = 124.0
-mouse_filter = 2
+[node name="CharactorImage" type="MarginContainer" parent="Panel/Panel/VBoxContainer/HBoxContainer"]
+margin_left = 94.0
+margin_right = 116.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 22, 25 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
-[node name="Title" type="Label" parent="Panel/VBoxContainer/TopBar"]
-margin_right = 34.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 4 )
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/VBoxContainer/HBoxContainer/CharactorImage"]
+margin_right = 22.0
+margin_bottom = 25.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Control2" type="Control" parent="Panel/Panel/VBoxContainer"]
+margin_top = 93.0
+margin_right = 120.0
+margin_bottom = 98.5
+rect_min_size = Vector2( 0, 5.5 )
+
+[node name="ColorRect" type="ColorRect" parent="Panel/Panel/VBoxContainer"]
+margin_top = 98.0
+margin_right = 120.0
+margin_bottom = 98.4
+rect_min_size = Vector2( 0, 0.4 )
+color = Color( 0.666667, 0.698039, 0.780392, 1 )
+
+[node name="Control3" type="Control" parent="Panel/Panel/VBoxContainer"]
+margin_top = 98.0
+margin_right = 120.0
+margin_bottom = 103.5
+rect_min_size = Vector2( 0, 5.5 )
+
+[node name="Title" type="Label" parent="Panel/Panel/VBoxContainer"]
+margin_top = 103.0
+margin_right = 120.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.937255, 0.203922, 0.231373, 1 )
 text = "Title"
 align = 1
 valign = 1
 
-[node name="Character" type="Label" parent="Panel/VBoxContainer/TopBar"]
-margin_left = 38.0
-margin_top = 3.0
-margin_right = 50.0
-margin_bottom = 17.0
-text = "M"
-align = 1
-valign = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
-margin_top = 128.0
-margin_right = 133.0
-margin_bottom = 171.0
-rect_min_size = Vector2( 0, 40 )
-mouse_filter = 2
-
-[node name="Description" type="Label" parent="Panel/VBoxContainer/MarginContainer2"]
-margin_right = 133.0
-margin_bottom = 43.0
-custom_fonts/font = ExtResource( 4 )
+[node name="Description" type="Label" parent="Panel/Panel/VBoxContainer"]
+margin_top = 114.0
+margin_right = 120.0
+margin_bottom = 133.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
 text = "Card Description
 "
+align = 1
+autowrap = true
