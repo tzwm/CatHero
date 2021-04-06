@@ -230,7 +230,22 @@ func create_start_and_end():
 		"start_point": start_point,
 		"end_point": end_point
 	}
-
+	
+func get_start_and_end():
+	var start = Vector2(0,0)
+	var end = Vector2(0,0)
+	for x in map_size.x:
+		for y in map_size.y:
+			var node = map_node_data[x][y]
+			if node.node_type == GameConst.NodeTypeEnum.STARTING_POINT:
+				start = node
+			elif node.node_type == GameConst.NodeTypeEnum.DESTINATION:
+				end = node
+	return {
+		"start": start,
+		"end": end
+	}
+	
 # 随机类型
 func random_node_type():
 	var r = randf()
@@ -377,8 +392,6 @@ func update_visible_state(pos: Vector2, n: int):
 		tile_map.set_cell(p.x, p.y, map_data[p.x][p.y])
 	
 	
-	
-	
 # 获取当前点到目标点的路径
 func get_access_path(start, target):
 	var visitied = []
@@ -450,7 +463,14 @@ func _on_Player_move_end(target: Vector2):
 		
 	if node.node_type == GameConst.NodeTypeEnum.DESTINATION:
 		new_game()
-
+	elif node.node_type == GameConst.NodeTypeEnum.WITCH_HUT:
+		var res = get_start_and_end()
+		var end = res.end
+		end.set_visible(true)
+		yield(get_tree().create_timer(0.5), 'timeout')
+		$Viewport/Player/Camera2D.position = node_to_position(end.node_pos - target)
+		yield(get_tree().create_timer(1.0), 'timeout')
+		$Viewport/Player/Camera2D.position = Vector2(0,0)
 
 func _on_Panel_move():
 	var current = player.node_pos
