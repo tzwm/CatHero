@@ -1,5 +1,6 @@
-extends Node2D
+extends Control
+class_name MapIndex
 
 func _ready():
-	Global.MapIndex = self
+	Global.MapIndexScene = self
 

@@ -6,7 +6,7 @@ export(int, 2, 10) var level
 var is_dead = false
 
 const MONSTER_DATA_DIR = "res://data/monsters"
-#const Combat = preload("res://combat/combat.tscn")
+const CombatScene = preload("res://combat/combat.tscn")
 
 const Monster2 = preload("res://assets/art/nodes/怪物2.png")
 const Monster3 = preload("res://assets/art/nodes/怪物3.png")
@@ -41,13 +41,14 @@ func visit():
 	# 已经触发过了
 	if !.can_trigger():
 		return
-		
-#	var monster_files := _get_all_monster_data_files()
-#	var monster = load(monster_files[randi() % monster_files.size()]).instance()
-#	var combat = Combat.instance()
-#	combat.init(monster)
-#	get_tree().get_root().add_child(combat)
-#	Global.MapIndex.hide()
+
+	var monster_files := _get_all_monster_data_files()
+	var rand_monster = monster_files[randi() % monster_files.size()]
+	var monster = load(rand_monster).instance()
+	var combat = CombatScene.instance()
+	combat.init(monster)
+	get_tree().get_root().add_child(combat)
+	Global.MapIndexScene.hide()
 
 func _get_all_monster_data_files() -> Array:
 	var dir := Directory.new()
@@ -72,12 +73,12 @@ func _get_all_monster_data_files() -> Array:
 	return files
 
 func can_pass():
-	return is_dead 
-	
+	return is_dead
+
 # 打败怪物后，修改参数
 func monster_dead():
 	if node_visit_limit > 0:
 		node_visit_limit -= 1
 	is_dead = true
 	$Sprite.texture = MonsterGrave
-	
+

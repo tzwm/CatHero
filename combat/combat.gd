@@ -11,7 +11,7 @@ func init(_monster):
 	monster = _monster
 
 func _ready():
-	Global.Combat = self
+	Global.CombatScene = self
 	if !monster:
 		monster = MonsterModel.instance()
 

@@ -6,8 +6,11 @@
 [ext_resource path="res://map/index.gd" type="Script" id=4]
 [ext_resource path="res://team.tscn" type="PackedScene" id=24]
 
-[node name="GameMap" type="Node2D"]
+[node name="GameMap" type="Control"]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

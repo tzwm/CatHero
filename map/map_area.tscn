@@ -119,7 +119,7 @@ animations = [ {
 
 [node name="MapArea" type="ViewportContainer"]
 margin_right = 1437.0
-margin_bottom = 1080.0
+margin_bottom = 708.0
 grow_horizontal = 0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -131,6 +131,7 @@ __meta__ = {
 }
 
 [node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1437, 708 )
 handle_input_locally = false
 usage = 0
 render_target_update_mode = 3
