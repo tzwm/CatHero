@@ -91,7 +91,6 @@ func _ready():
 	new_game()
 	var rect = get_rect()
 	$Viewport.size = rect.size
-	
 	Global.connect("watch_towner", self, "_on_Watch_towner")
 
 	
