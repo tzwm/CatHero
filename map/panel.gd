@@ -4,8 +4,9 @@ signal move
 signal rest
 
 func _ready():
-	$VBoxContainer/TopInfo/TorchCount.text = String(Global.torch)
-	$VBoxContainer/TopInfo/CoinCount.text = String(Global.coin)
+	
+	$VBoxContainer/TopInfo/TorchCount/Text.text = String(Global.torch)
+	$VBoxContainer/TopInfo/CoinCount/Text.text = String(Global.coin)
 	Global.connect("torch_change", self, "_on_Torch_change")
 	Global.connect("coin_change", self, "_on_Coin_change")
 

@@ -15,7 +15,7 @@ signal witch_hut
 
 var Combat
 
-var MapIndex: Node2D
+var MapIndexScene
 
 # 火把数量
 var torch = 10
