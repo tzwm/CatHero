@@ -99,8 +99,8 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="CharactorImage" type="MarginContainer" parent="Panel/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 94.0
-margin_right = 116.0
+margin_left = 95.0
+margin_right = 117.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 22, 25 )
 size_flags_horizontal = 4

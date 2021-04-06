@@ -10,6 +10,7 @@ export(int) var health_max
 
 onready var health_current = health_max
 var exp_current := 0
+var stress_current := 3
 
 onready var deck_built = $DeckBuilt.get_children()
 var deck_hand : Array

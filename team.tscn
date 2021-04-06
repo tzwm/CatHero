@@ -12,23 +12,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Heroes" type="HBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 1920.0
 margin_bottom = 372.0
-rect_min_size = Vector2( 1800, 372 )
+rect_min_size = Vector2( 1920, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hero" parent="Heroes" instance=ExtResource( 2 )]
-margin_bottom = 372.0
+[node name="Heroes" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 105.0
+margin_top = 9.0
+margin_right = 1814.0
+margin_bottom = 362.0
+custom_constants/separation = 97
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Hero2" parent="Heroes" instance=ExtResource( 2 )]
-margin_left = 509.0
-margin_right = 1014.0
-margin_bottom = 372.0
+[node name="Hero" parent="CenterContainer/Heroes" instance=ExtResource( 2 )]
 
-[node name="Hero3" parent="Heroes" instance=ExtResource( 2 )]
-margin_left = 1018.0
-margin_right = 1523.0
-margin_bottom = 372.0
+[node name="Hero2" parent="CenterContainer/Heroes" instance=ExtResource( 2 )]
+margin_left = 602.0
+margin_right = 1107.0
+
+[node name="Hero3" parent="CenterContainer/Heroes" instance=ExtResource( 2 )]
+margin_left = 1204.0
+margin_right = 1709.0
