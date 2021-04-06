@@ -4,10 +4,12 @@ signal move
 signal rest
 
 func _ready():
-	$VBoxContainer/TopInfo/TorchCount.text = String(Global.torch)
-	$VBoxContainer/TopInfo/CoinCount.text = String(Global.coin)
+	_on_Torch_change(Global.torch)
+	_on_Coin_change(Global.coin)
+	_on_Depress_change(Global.depress)
 	Global.connect("torch_change", self, "_on_Torch_change")
 	Global.connect("coin_change", self, "_on_Coin_change")
+	Global.connect("depress_change", self, "_on_Depress_change")
 
 
 func set_info(name, desc):
@@ -26,10 +28,10 @@ func _on_MapArea_node_selected(node):
 	$VBoxContainer/Info/Desc.text = node.node_desc
 
 func _on_Torch_change(count: int):
-	$VBoxContainer/TopInfo/TorchCount.text = String(count)
+	$VBoxContainer/TopInfo/TorchCount/Text.text = String(count)
 	
 func _on_Coin_change(count: int):
-	$VBoxContainer/TopInfo/CoinCount.text = String(count)
+	$VBoxContainer/TopInfo/CoinCount/Text.text = String(count)
 	
-	
-	
+func _on_Depress_change(count: int):
+	$VBoxContainer/TopInfo/DepressCount/Text.text = String(count)

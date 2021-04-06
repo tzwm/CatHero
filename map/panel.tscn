@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://map/panel.gd" type="Script" id=2]
 [ext_resource path="res://assets/art/ui/btn2.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/ui/btn1.png" type="Texture" id=4]
 [ext_resource path="res://assets/art/ui/fire.png" type="Texture" id=5]
-[ext_resource path="res://assets/art/火把.png" type="Texture" id=6]
-[ext_resource path="res://assets/art/金币.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/ui/火把.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/ui/金币.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/ui/压抑值.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/fonts/FZLTHJW.TTF"
@@ -50,34 +51,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TorchCount" type="Label" parent="VBoxContainer/TopInfo"]
+[node name="TorchCount" type="MarginContainer" parent="VBoxContainer/TopInfo"]
 margin_left = 64.0
+margin_right = 117.0
+margin_bottom = 60.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 0
+
+[node name="Text" type="Label" parent="VBoxContainer/TopInfo/TorchCount"]
+margin_left = 10.0
 margin_top = 8.0
-margin_right = 87.0
+margin_right = 33.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Coin" type="TextureRect" parent="VBoxContainer/TopInfo"]
-margin_left = 91.0
-margin_right = 151.0
+margin_left = 121.0
+margin_right = 181.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 60, 60 )
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="CoinCount" type="Label" parent="VBoxContainer/TopInfo"]
-margin_left = 155.0
+[node name="CoinCount" type="MarginContainer" parent="VBoxContainer/TopInfo"]
+margin_left = 185.0
+margin_right = 238.0
+margin_bottom = 60.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 10
+
+[node name="Text" type="Label" parent="VBoxContainer/TopInfo/CoinCount"]
+margin_left = 10.0
 margin_top = 8.0
-margin_right = 178.0
+margin_right = 33.0
 margin_bottom = 51.0
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+text = "0"
+
+[node name="Depress" type="TextureRect" parent="VBoxContainer/TopInfo"]
+margin_left = 242.0
+margin_right = 302.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 60, 60 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="DepressCount" type="MarginContainer" parent="VBoxContainer/TopInfo"]
+margin_left = 306.0
+margin_right = 359.0
+margin_bottom = 60.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 10
+
+[node name="Text" type="Label" parent="VBoxContainer/TopInfo/DepressCount"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 33.0
+margin_bottom = 51.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "0"
 
 [node name="Info" type="Panel" parent="VBoxContainer"]

@@ -437,7 +437,9 @@ func _on_TileMap_click_cell(pos):
 func _on_Player_move_end(target: Vector2):
 	update_visible_state(target, visible_area)
 	map_node_data[target.x][target.y].visit()
-	Global.torch_change(-1)
+	var success = Global.torch_change(-1)
+	if !success:
+		Global.depress_change(1)
 
 
 func _on_Panel_move():

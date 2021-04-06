@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/火把.png-ce3493691a8f7bb0bd4021833b42ad05.stex"
+path="res://.import/火把.png-349f50e2700c036b14b8a6f86dd42c56.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/火把.png"
-dest_files=[ "res://.import/火把.png-ce3493691a8f7bb0bd4021833b42ad05.stex" ]
+source_file="res://assets/art/ui/火把.png"
+dest_files=[ "res://.import/火把.png-349f50e2700c036b14b8a6f86dd42c56.stex" ]
 
 [params]
 
