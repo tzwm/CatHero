@@ -6,7 +6,7 @@ export(int, 2, 10) var level
 var is_dead = false
 
 const MONSTER_DATA_DIR = "res://data/monsters"
-#const Combat = preload("res://combat/combat.tscn")
+const Combat = preload("res://combat/combat.tscn")
 
 const Monster2 = preload("res://assets/art/nodes/怪物2.png")
 const Monster3 = preload("res://assets/art/nodes/怪物3.png")
@@ -42,12 +42,12 @@ func visit():
 	if !.can_trigger():
 		return
 		
-#	var monster_files := _get_all_monster_data_files()
-#	var monster = load(monster_files[randi() % monster_files.size()]).instance()
-#	var combat = Combat.instance()
-#	combat.init(monster)
-#	get_tree().get_root().add_child(combat)
-#	Global.MapIndex.hide()
+	var monster_files := _get_all_monster_data_files()
+	var monster = load(monster_files[randi() % monster_files.size()]).instance()
+	var combat = Combat.instance()
+	combat.init(monster)
+	get_tree().get_root().add_child(combat)
+	Global.MapIndex.hide()
 
 func _get_all_monster_data_files() -> Array:
 	var dir := Directory.new()
