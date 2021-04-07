@@ -63,9 +63,14 @@ func _end_combat():
 		remain_damage -= damage
 		index += 1
 
+	# TODO(tzwm): 优化代码
+	yield(get_tree().create_timer(3.0), "timeout")
+	monster.emit_signal('fight_end')
+	Global.MainPageScene.go_back_map_from_combat()
 
 func _combat_win():
 	print("win")
+	yield(get_tree().create_timer(3.0), "timeout")
 	monster.emit_signal('fight_end')
 	Global.MainPageScene.go_back_map_from_combat()
 
