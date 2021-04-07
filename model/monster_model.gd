@@ -1,6 +1,8 @@
 extends Node
 class_name MonsterModel
 
+signal fight_end
+
 export(String) var nickname
 export(Texture) var avatar
 export(int) var level

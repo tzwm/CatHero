@@ -5,7 +5,11 @@ export(int, 2, 10) var level
 # 怪物是否已经死亡
 var is_dead = false
 
-const MONSTER_DATA_DIR = "res://data/monsters"
+const MonsterModel = preload("res://model/monster_model.tscn")
+
+
+var monster: MonsterModel
+
 
 const Monster2 = preload("res://assets/art/nodes/怪物2.png")
 const Monster3 = preload("res://assets/art/nodes/怪物3.png")
@@ -34,39 +38,26 @@ const TextureMap = {
 func set_monster_level(l: int):
 	level = l
 	$Sprite.texture = TextureMap[l]
-
+	
+	var monster_list = []
+	if Global.monster_scene_map.has(l):
+		monster_list = Global.monster_scene_map[l]
+	else:
+		monster_list = Global.monster_scene_map[2]
+		
+	monster = monster_list[randi() % monster_list.size()].instance()
+	node_desc += monster.name
+	
+	monster.connect("fight_end", self, "_on_Fight_end")
 
 func visit():
 	# 已经触发过了
 	if !.can_trigger():
 		return
 		
-	var monster_files := _get_all_monster_data_files()
-	var monster = load(monster_files[randi() % monster_files.size()]).instance()
 	Global.MainPageScene.enter_combat(monster)
 	#Global.MapIndex.hide()
 
-func _get_all_monster_data_files() -> Array:
-	var dir := Directory.new()
-	if dir.open(MONSTER_DATA_DIR) != OK:
-		printerr("Error Monster Data directory!")
-		return []
-
-	dir.list_dir_begin()
-	var files := []
-	var filename := dir.get_next()
-	while filename != "":
-		if dir.current_is_dir():
-			filename = dir.get_next()
-			continue
-
-		if filename.get_extension() == "tscn":
-			var filepath := dir.get_current_dir() + "/" + filename
-			files.append(filepath)
-
-		filename = dir.get_next()
-
-	return files
 
 func can_pass():
 	return is_dead 
@@ -78,3 +69,5 @@ func monster_dead():
 	is_dead = true
 	$Sprite.texture = MonsterGrave
 	
+func _on_Fight_end():
+	monster_dead()

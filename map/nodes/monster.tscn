@@ -7,4 +7,4 @@
 script = ExtResource( 2 )
 node_type = 1
 node_name = "怪物"
-node_desc = "遇到了一些生物"
+node_desc = "遇到了怪物："

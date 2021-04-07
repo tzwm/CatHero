@@ -1,6 +1,8 @@
 extends Node
 #class_name Global
 
+const MONSTER_DATA_DIR = "res://data/monsters"
+
 # 火把数量变化
 signal torch_change
 
@@ -32,9 +34,13 @@ var coin = 10
 # 当前关卡
 var level = 0
 
-# 玩家当前所处位置
-var player_pos = Vector2(0,0)
+# 怪物实例，根据等级分组
+var monster_scene_map = {}
 
+func _ready():
+	var monster_path_list = _get_all_monster_data_files()
+	monster_scene_map = _group_by_level(monster_path_list)
+	
 # 获取宝箱金币数量
 func get_coin_count():
 	if level == 1:
@@ -44,11 +50,6 @@ func get_coin_count():
 	else:
 		return 16 + randi() % 5
 		
-
-# 重置全局参数
-func reset():
-	level = 0;
-	player_pos = Vector2(0, 0)
 
 func new_game_level():
 	if level < 3:
@@ -72,4 +73,38 @@ func coin_change(count: int):
 	emit_signal("coin_change", coin)
 	return true
 
-	
+
+func _group_by_level(files: Array):
+	var data = {}
+	for f in files:
+		var scene = load(f)
+		var m  = load(f).instance()
+		print(m.level)
+		if data.has(m.level):
+			data[m.level].append(scene)
+		else:
+			data[m.level] = [scene]
+		m.queue_free()
+	return data
+
+func _get_all_monster_data_files() -> Array:
+	var dir := Directory.new()
+	if dir.open(MONSTER_DATA_DIR) != OK:
+		printerr("Error Monster Data directory!")
+		return []
+
+	dir.list_dir_begin()
+	var files := []
+	var filename := dir.get_next()
+	while filename != "":
+		if dir.current_is_dir():
+			filename = dir.get_next()
+			continue
+
+		if filename.get_extension() == "tscn":
+			var filepath := dir.get_current_dir() + "/" + filename
+			files.append(filepath)
+
+		filename = dir.get_next()
+
+	return files

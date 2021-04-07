@@ -66,6 +66,7 @@ func _end_combat():
 
 func _combat_win():
 	print("win")
+	monster.emit_signal('fight_end')
 	Global.MainPageScene.go_back_map_from_combat()
 
 func _get_min_health() -> int:
