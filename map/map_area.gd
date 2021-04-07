@@ -48,7 +48,7 @@ const map_node_data = []
 const map_data = []
 
 # 可见区域范围
-const visible_area = 1
+const visible_area = 2
 
 # 格子像素
 const map_cell_size = 64
@@ -488,4 +488,4 @@ func _on_Panel_move():
 
 # 触发了瞭望塔
 func _on_Watch_towner(pos: Vector2):
-	update_visible_state(pos, 2)
+	update_visible_state(pos, 3)

@@ -68,6 +68,7 @@ func monster_dead():
 		node_visit_limit -= 1
 	is_dead = true
 	$Sprite.texture = MonsterGrave
+	node_desc = "怪物" + monster.name + "被打败了"
 	
 func _on_Fight_end():
 	monster_dead()
