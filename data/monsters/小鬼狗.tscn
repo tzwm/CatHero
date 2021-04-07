@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=1]
+[ext_resource path="res://assets/monsters/软泥怪-小鬼狗.png" type="Texture" id=1]
 [ext_resource path="res://model/monster_model.gd" type="Script" id=2]
 
-[node name="OozeMonster" type="Node"]
+[node name="小鬼狗" type="Node"]
 script = ExtResource( 2 )
-nickname = "软泥怪"
+nickname = "小鬼狗"
 avatar = ExtResource( 1 )
 level = 2
 health_max = 6

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://model/monster_model.gd" type="Script" id=1]
+[ext_resource path="res://assets/monsters/三头犬.png" type="Texture" id=2]
+
+[node name="三头犬" type="Node"]
+script = ExtResource( 1 )
+nickname = "三头犬"
+avatar = ExtResource( 2 )
+level = 9
+health_max = 28
+attack = 18
+coin_dropped = 10

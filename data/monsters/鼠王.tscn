@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://model/monster_model.gd" type="Script" id=1]
+[ext_resource path="res://assets/monsters/鼠王.png" type="Texture" id=2]
+
+[node name="鼠王" type="Node"]
+script = ExtResource( 1 )
+nickname = "鼠王"
+avatar = ExtResource( 2 )
+level = 10
+health_max = 35
+attack = 24
+coin_dropped = 20

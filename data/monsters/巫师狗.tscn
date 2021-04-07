@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://model/monster_model.gd" type="Script" id=1]
+[ext_resource path="res://assets/monsters/巫师狗.png" type="Texture" id=2]
+
+[node name="巫师狗" type="Node"]
+script = ExtResource( 1 )
+nickname = "巫师狗"
+avatar = ExtResource( 2 )
+level = 8
+health_max = 20
+attack = 20
+coin_dropped = 12

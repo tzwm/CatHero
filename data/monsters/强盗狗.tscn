@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/monsters/强盗狗.png" type="Texture" id=1]
+[ext_resource path="res://model/monster_model.gd" type="Script" id=2]
+
+[node name="强盗狗" type="Node"]
+script = ExtResource( 2 )
+nickname = "强盗狗"
+avatar = ExtResource( 1 )
+level = 4
+health_max = 12
+attack = 10
+coin_dropped = 6

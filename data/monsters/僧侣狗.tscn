@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://model/monster_model.gd" type="Script" id=1]
-[ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
+[ext_resource path="res://assets/monsters/僧侣狗-鸽子人.png" type="Texture" id=2]
 
-[node name="DoveMan" type="Node"]
+[node name="僧侣狗" type="Node"]
 script = ExtResource( 1 )
-nickname = "鸽子人"
+nickname = "僧侣狗"
 avatar = ExtResource( 2 )
 level = 3
 health_max = 8

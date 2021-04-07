@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/monsters/食人花.png" type="Texture" id=1]
+[ext_resource path="res://model/monster_model.gd" type="Script" id=2]
+
+[node name="食人花" type="Node"]
+script = ExtResource( 2 )
+nickname = "食人花"
+avatar = ExtResource( 1 )
+level = 5
+health_max = 15
+attack = 9
+coin_dropped = 4

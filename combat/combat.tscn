@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/fz_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sniffing-dog.png" type="Texture" id=2]
 [ext_resource path="res://combat/combat.gd" type="Script" id=3]
-[ext_resource path="res://data/monsters/dove_man.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/monsters/僧侣狗.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/art/ui/btn1.png" type="Texture" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
