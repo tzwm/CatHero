@@ -48,3 +48,7 @@ func draw_a_card() -> void:
 
 	deck_hand.push_back(deck_unused.pop_back())
 
+func change_health(percent: float):
+	health_current += int(health_max * 0.2)
+	if health_current > health_max:
+		health_current = health_max
