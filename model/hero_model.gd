@@ -21,9 +21,9 @@ func _ready():
 	deck_unused = deck_built.duplicate(true)
 	deck_unused.shuffle()
 
-	_draw_a_card()
+	draw_a_card()
 	yield(get_tree().create_timer(1.0), "timeout")
-	_draw_a_card()
+	draw_a_card()
 
 func play_the_card(card, index):
 	var c = deck_hand[index]
@@ -34,7 +34,7 @@ func play_the_card(card, index):
 func get_damage(value):
 	health_current -= value
 
-func _draw_a_card() -> void:
+func draw_a_card() -> void:
 	if deck_hand.size() >= HAND_LIMIT:
 		return
 

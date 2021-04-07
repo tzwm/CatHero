@@ -346,6 +346,7 @@ func player_to_cell(node_pos):
 	player.node_pos = node_pos
 	player.position = pos
 
+
 func player_move(path: Array, target: Vector2):
 	var real_pos_path = []
 	for p in path:
@@ -470,6 +471,10 @@ func _on_Player_move_end(target: Vector2):
 		$Viewport/Player/Camera2D.position = node_to_position(end.node_pos - target)
 		yield(get_tree().create_timer(1.0), 'timeout')
 		$Viewport/Player/Camera2D.position = Vector2(0,0)
+
+	#TODO(tzwm): 临时加一下
+	if Global.Team:
+		Global.Team.every_heros_draw_a_card()
 
 func _on_Panel_move():
 	var current = player.node_pos

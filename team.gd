@@ -40,3 +40,7 @@ func change_depress(value: int):
 func change_all_hero_depress(value: int):
 	print('change_all_hero_depress')
 	pass
+	
+func every_heros_draw_a_card():
+	for hero in Global.heros:
+		hero.draw_a_card()
